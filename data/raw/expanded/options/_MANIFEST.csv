@@ -1,0 +1,12 @@
+artifact,path,rows,n_calls,n_puts,sha256
+chain_2026-09-04,data/raw/expanded/options/KRE_chain_2026-08-30_2026-09-04.csv,63,32.0,31.0,4a3b997c9a6d50bc7676ac075be92702064c3ddca036496cb14df367b5d174a6
+chain_2026-09-11,data/raw/expanded/options/KRE_chain_2026-08-30_2026-09-11.csv,56,28.0,28.0,1b422c28da08c415ae95b1f32aa1ccbcd8d6553bbde7c834ad863f79d2bd02e3
+chain_2026-09-18,data/raw/expanded/options/KRE_chain_2026-08-30_2026-09-18.csv,84,43.0,41.0,054155ec3f8c34922d9d0e58f86c3f2fea459adbb6dc1bbd7cb7d5d179ed3a34
+chain_2026-09-25,data/raw/expanded/options/KRE_chain_2026-08-30_2026-09-25.csv,41,22.0,19.0,64920b89852bb415ff07e78ce47669447c617c495d6948294789bf2d1202e2a4
+chain_2026-09-30,data/raw/expanded/options/KRE_chain_2026-08-30_2026-09-30.csv,61,29.0,32.0,c7b43c68938c0f9734473690916c8743c59d084d6866f9f36dc4fa36f290214f
+chain_2026-10-02,data/raw/expanded/options/KRE_chain_2026-08-30_2026-10-02.csv,13,4.0,9.0,d388b837a36e515479acf510caae6a9f8dfd5869a9e3a0022c4adcc7501d9511
+chain_2026-10-16,data/raw/expanded/options/KRE_chain_2026-08-30_2026-10-16.csv,38,19.0,19.0,b9a36d5fa509cf28bd1d79c6f9cf0bdb49e750e6a6a21db53952c5ead04ffefe
+chain_2026-11-20,data/raw/expanded/options/KRE_chain_2026-08-30_2026-11-20.csv,55,24.0,31.0,adf5db1785c711296e2847e5251ba16a7acaa565a25a2742bd4e01784ce218a8
+chain_2026-12-18,data/raw/expanded/options/KRE_chain_2026-08-30_2026-12-18.csv,121,62.0,59.0,008fd810fb7318e4b97c9a38f4c6f9f1881a5fcf495f62389a3619987f12002b
+chain_2026-12-31,data/raw/expanded/options/KRE_chain_2026-08-30_2026-12-31.csv,55,26.0,29.0,ddad202361711fada67868fa3d2eb2eac373cde4342a94fe6ab09fa067f058d9
+summary,data/raw/expanded/options/KRE_chain_summary_2026-08-30.csv,10,,,cd2aae8ab59bfd38c0e702d6a06bfb17c5b85a68e5b79e8a24340ce82b3ddc66

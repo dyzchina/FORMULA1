@@ -1,0 +1,77 @@
+% !TeX root = ../main.tex
+% Appendix B1: Quantum Copula Bounds and the CHSH Frontier
+% Batch #4.9c — Notation hygiene
+
+\section{Quantum Copula Bounds and the CHSH Frontier}\label{app:copula-chsh}
+
+\subsection{Classical Copula Bounds}
+
+A classical copula $C : [0, 1]^2 \to [0, 1]$ is a bivariate distribution function
+with uniform marginals, constrained by the Fr\'echet--Hoeffding bounds:
+\begin{equation*}
+    \max(u + v - 1, 0) \leq C(u, v) \leq \min(u, v).
+\end{equation*}
+
+In the context of financial contagion, copulas are used to model the joint
+distribution of asset returns or default events. The classical bounds imply that
+the correlation between financial variables is limited by their marginal
+distributions.
+
+\subsection{Quantum Violation of Classical Copula Bounds}
+
+In the quantum framework, the joint distribution of two non-commuting observables
+is not a classical copula but a \emph{quantum copula}, which can violate the
+Fr\'echet--Hoeffding bounds. This violation is a consequence of the
+non-commutative structure of the observable algebra and is analogous to the
+violation of Bell inequalities in quantum mechanics
+\citep{clauser1969proposed,fine1982hidden}.
+
+\begin{theorem}[Quantum copula bound]\label{thm:quantum-copula}
+For two non-commuting market observables $\hat{A}, \hat{B} \in \mathcal{A}$ with
+$[\hat{A}, \hat{B}] \neq 0$, the quantum copula $C_Q$ satisfies
+\begin{equation*}
+    C_Q(u, v) \leq \min(u, v) + \frac{\hbar_{\mathrm{econ}}}{2}
+    \cdot \|\hat{A}\| \cdot \|\hat{B}\|,
+\end{equation*}
+where $\|\cdot\|$ denotes the operator norm. The classical Fr\'echet--Hoeffding
+upper bound is violated when $\hbar_{\mathrm{econ}} > 0$.
+\end{theorem}
+
+This result has direct implications for financial contagion modeling. The joint
+probability of extreme co-movements implied by equity option prices can exceed
+the classical copula bound when the market is subject to microstructural
+uncertainty. This provides a theoretical explanation for the ``correlation
+skew'' observed in equity index options, where the implied correlation exceeds
+the bounds of classical copula models.
+
+\subsection{The CHSH Frontier in Financial Markets}
+
+The Clauser--Horne--Shimony--Holt (CHSH) inequality
+\citep{clauser1969proposed} provides a quantitative test of local hidden variable
+theories. In the financial context, the CHSH inequality tests whether the joint
+distribution of two market observables can be explained by a classical latent
+factor model.
+
+Define the CHSH parameter for four market observables
+$\hat{A}_1, \hat{A}_2, \hat{B}_1, \hat{B}_2$ as
+\begin{equation*}
+    S = \langle \hat{A}_1 \hat{B}_1 \rangle + \langle \hat{A}_1 \hat{B}_2 \rangle
+    + \langle \hat{A}_2 \hat{B}_1 \rangle - \langle \hat{A}_2 \hat{B}_2 \rangle.
+\end{equation*}
+
+In a classical latent factor model, $|S| \leq 2$ (the CHSH bound). In the quantum
+framework, the Tsirelson bound \citep{cirelson1980quantum} applies:
+$|S| \leq 2\sqrt{2}$.
+
+\begin{proposition}[Financial CHSH violation]\label{prop:chsh-violation}
+For appropriately chosen equity option observables of financial institutions, the
+CHSH parameter $S$ can exceed the classical bound of $2$ when
+$\hbar_{\mathrm{econ}} > 0$, providing empirical evidence for the non-commutative
+structure of financial markets.
+\end{proposition}
+
+The empirical test of this proposition is a direction for future research. A
+finding that $S > 2$ in equity markets would provide direct evidence that the
+joint distribution of financial asset returns cannot be fully captured by
+classical latent factor models, supporting the quantum framework's prediction of
+non-commutative market microstructure.

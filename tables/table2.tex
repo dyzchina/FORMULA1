@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering
+\caption{Summary statistics for the QST calibration, full sample (2004-10-04 to 2024-12-31).}
+\label{tab:qst-stats}
+\begin{tabular}{lrrrrrr}
+\hline
+Parameter & Mean & Median & Std.\ Dev. & 5\% & 95\% & AR(1) \\
+\hline
+$\theta_t$ (distress amplitude)          & 0.3677 & 0.3186 & 0.2061 & 0.1081 & 0.7839 & 0.7579 \\
+$\phi_t$ (contagion phase, rad)          & -0.5782 & -2.3104 & 2.4201 & -2.9406 & 2.7548 & 0.9025 \\
+$\hbar_{\mathrm{econ}}$ (Planck const.)  & 0.0620 & 0.0263 & 0.1456 & 0.0114 & 0.2285 & 0.9822 \\
+\hline
+\end{tabular}
+
+\medskip
+\footnotesize
+\textit{Note}: $\theta_t = \|\mathbf{r}_t\|$ is the Bloch vector norm.
+$\phi_t = \arctan2(r_y, r_x)$ is computed only on days when HY-OAS is available (2023-05-22 onwards; N=406 days).
+$\hbar_{\mathrm{econ}}(t) = k \cdot \overline{\text{Amihud}}_{20d}(t)$ scaled so that sample mean equals 0.062 (canonical value from paper §5.1).
+All parameters exhibit persistence consistent with slow-moving nature of market microstructure.
+\end{table}

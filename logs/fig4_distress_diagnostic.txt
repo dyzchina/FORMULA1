@@ -1,0 +1,80 @@
+Fig 4 Distress vs Conventional Indicators — regeneration diagnostic
+====================================================================
+Executed at: 2026-09-05T00:52:32.497640+00:00
+Axis version: v2 (refactored pipeline)
+Window: 2004-01-01 to 2024-12-31 (full range)
+Trading days rendered: 5096
+
+θ_t (distress amplitude) statistics:
+  min:  0.0072  (date 2018-04-23)
+  mean: 0.3677
+  max:  0.9993  (date 2008-10-15)
+  Above-0.5 fraction (proxy for elevated distress):  22.4%
+
+VIX statistics:
+  min:  9.14
+  mean: 18.97
+  max:  82.69  (date 2020-03-16)
+
+TED spread statistics:
+  min:  -177.20
+  mean: 28.40
+  max:  458.00  (date 2008-10-10)
+  L1 real portion date range: 2004-01-01 to 2022-01-21
+  L2 proxy portion date range: 2022-01-22 to 2024-12-31
+
+KRE statistics:
+  first date: 2006-06-22
+  min:  14.68  (date 2009-03-09)
+  max:  78.78  (date 2022-01-14)
+
+Crisis-window peak values (each panel, each crisis):
+  GFC (2007-12-01 to 2009-06-30):
+    θ_t peak: 0.9993 on 2008-10-15
+    VIX peak: 80.86 on 2008-11-20
+    TED peak: 458.00 on 2008-10-10
+    KRE min:  14.68 on 2009-03-09
+  COVID (2020-02-15 to 2020-04-30):
+    θ_t peak: 0.9955 on 2020-03-16
+    VIX peak: 82.69 on 2020-03-16
+    TED peak: 142.00 on 2020-03-26
+    KRE min:  28.13 on 2020-03-23
+  2023 Banking (2023-03-01 to 2023-06-30):
+    θ_t peak: 0.8687 on 2023-05-24
+    VIX peak: 26.52 on 2023-03-13
+    TED peak: nan on N/A
+    KRE min:  36.08 on 2023-05-04
+
+Data sources with MD5:
+  VIX:  data\raw\all\FRED_VIXCLS.csv  7ff868fdefe389b8
+  TED:  data\derived\TED_spliced_2004_2024.parquet  ebb9d02b11af6c8d
+  KRE:  data\raw\KRE.csv  662432c958a4600c
+
+Cross-crisis lead-lag preview (informal — full analysis in Fig 4 → Table 3 pipeline):
+  For each crisis, compute lag (in trading days) at which correlation between
+  θ_t and each conventional indicator (VIX, TED, KRE) peaks.
+
+  GFC:
+    θ_t lead over VIX: 0 days
+    θ_t lead over TED: 0 days
+    θ_t lead over KRE: 29 days
+  COVID:
+    θ_t lead over VIX: 0 days
+    θ_t lead over TED: -3 days
+    θ_t lead over KRE: 18 days
+  2023 Banking:
+    θ_t lead over VIX: 0 days
+    θ_t lead over TED: 0 days
+    θ_t lead over KRE: 3 days
+
+Physical sanity checks:
+  1. θ_t peak during GFC (0.9993) > θ_t peak during 2015 non-crisis year (0.7671)? YES
+  2. VIX peak during COVID (82.69) > VIX peak during 2015 (40.74)? YES
+  3. θ_t elevated (>0.4) in 3/3 crisis windows? YES
+
+Figure files:
+  D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\figures\indicator_comparison.pdf  (151145 bytes)
+  D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\figures\indicator_comparison.png  (260319 bytes)
+
+Reproducibility:
+  (Run 1 and Run 2 hashes will be appended after second run)

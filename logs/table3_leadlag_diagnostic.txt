@@ -1,0 +1,35 @@
+Table 3 Lead-Lag — diagnostic (Batch #3.6a-v2, 2023 window only)
+============================================================
+Executed at: 2026-09-05T00:53:18.866886+00:00
+Crisis window: 2023-01-01 to 2023-06-30
+Max lag: 30 days
+Bootstrap: 1000 resamples, block length=10
+Seed: 42
+
+--- Per-indicator results (2023 window) ---
+  KRE                  | N= 124 | max_corr=0.3119 | lead=  0d | CI=[-24, 26]
+  VIX                  | N= 124 | max_corr=-0.5591 | lead= -1d | CI=[-27, 25]
+  TED Spread           | N=   0 | N/A (insufficient data for cross-correlation)
+  HY-OAS               | N=  30 | N/A (insufficient data for cross-correlation)
+  STLFSI4              | N=  26 | N/A (insufficient data for cross-correlation)
+  S&P 500              | N= 124 | max_corr=0.5526 | lead=  0d | CI=[0, 0]
+  JPM                  | N= 124 | max_corr=0.3115 | lead=  0d | CI=[-11, 18]
+  EFFR                 | N= 124 | max_corr=0.6796 | lead=-12d | CI=[-20, 25]
+  Gold Futures         | N= 124 | max_corr=-0.2262 | lead=-11d | CI=[-29, 29]
+
+--- Guard violations ---
+  KRE                  | G2 | |corr|=0.3119 < 0.4
+  KRE                  | G3 | CI_width=50 > 20
+  VIX                  | G1 | lead=-1 not in [0, 20]
+  VIX                  | G3 | CI_width=52 > 20
+  JPM                  | G2 | |corr|=0.3115 < 0.4
+  JPM                  | G3 | CI_width=29 > 20
+  EFFR                 | G1 | lead=-12 not in [0, 20]
+  EFFR                 | G3 | CI_width=45 > 20
+  Gold Futures         | G1 | lead=-11 not in [0, 20]
+  Gold Futures         | G2 | |corr|=0.2262 < 0.4
+  Gold Futures         | G3 | CI_width=58 > 20
+
+--- Sample-size caveats ---
+  HY-OAS: available from 2023-05-22; ~30 trading days in 2023 window
+  STLFSI4: weekly series; ~26 distinct weekly observations in 2023 window

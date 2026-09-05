@@ -1,0 +1,24 @@
+Table 6 Hedging Performance — diagnostic (Batch #3.6d)
+============================================================
+Executed at: 2026-09-05T00:53:46.874958Z
+L-level: L2_PROXY (KRE spot L1 + Fig A.1 smile L2)
+
+--- Parameters ---
+KRE spot path: 21 days (2023-02-24T00:00:00.000000000 to 2023-03-24T00:00:00.000000000)
+S0: 61.6800
+OTM strike K: 58.5960 (=0.95*S0)
+Initial moneyness x = ln(S0/K): 0.051293
+Option maturity: 20 days (0.0794 years)
+Risk-free rate: 0.045
+sigma_0: 0.2841
+hbar_econ: 0.087
+gamma: 0.51
+
+--- Results ---
+BSM delta hedge: RMSHE=560.1 bps, Mean P&L=-126.5 bps, Std=545.6 bps
+Heston dynamic hedge: RMSHE=572.3 bps, Mean P&L=-130.1 bps, Std=557.3 bps
+Quantum optimal hedge: RMSHE=555.9 bps, Mean P&L=-124.7 bps, Std=541.8 bps
+
+--- Guard results ---
+G1 (all RMSHE < 1000 bps): PASS
+G2 (Quantum < BSM): PASS

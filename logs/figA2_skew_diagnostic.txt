@@ -1,0 +1,29 @@
+Fig A.2 Skew Asymptotics — regeneration diagnostic
+==================================================
+Executed at: 2026-09-05T08:52:40.970133
+L-level: L3_SIM (pure theoretical curves)
+
+Model coefficients:
+  Quantum: c_Q = 0.063  (slope = c_Q * tau^-1)
+  Heston:  c_H = 0.15   (slope = c_H * tau^-0.5)
+  SABR:    c_S = 0.08   (slope constant)
+  Rough:   c_R = 0.3, H = 0.1  (slope = c_R * tau^-0.4)
+
+  Quantum: tau=5d=0.012482, tau=60d=0.001049
+  Heston: tau=5d=0.066768, tau=60d=0.019359
+  SABR: tau=5d=0.080000, tau=60d=0.080000
+  Rough: tau=5d=0.157002, tau=60d=0.058312
+
+Slope crossover analysis:
+  Quantum vs Heston crossover tau: nan days
+  Quantum vs Rough crossover tau:  nan days
+
+Figure files:
+  figures/skew_comparison.pdf (21027 bytes)
+  figures/skew_comparison.png (82811 bytes)
+
+Reproducibility (2 runs):
+  Run 1 PDF md5: <run2>
+  Run 2 PDF md5: <run2>
+  Run 1 PNG md5: <run2>
+  Run 2 PNG md5: <run2>

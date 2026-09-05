@@ -1,0 +1,6 @@
+series,source,path,rows,sha256
+VXVCLS,fred,data/raw/expanded/vix_ts/VXVCLS_fred.csv,3520,cdc423542c0a83ca60f0065c131b5ba5da7d79a6a733daac3ecc920292e2cd66
+VIX9D,yahoo,data/raw/expanded/vix_ts/VIX9D_yahoo.csv,3394,2924835b70546b39dcbb673e6f8cfe06511b979949dd4f3beb081279cb87a5f6
+VIX,yahoo,data/raw/expanded/vix_ts/VIX_yahoo.csv,3394,01083afd1d08a7020c71cb7ba296f71f9db927a4b076b997fdda85c9f9389bc9
+VIX3M_yahoo,yahoo,data/raw/expanded/vix_ts/VIX3M_yahoo_yahoo.csv,3394,add3be932d99700520c30a0baeefb5c78d72a26c5c67b00926b354b9a8d521c2
+VIX6M,yahoo,data/raw/expanded/vix_ts/VIX6M_yahoo.csv,3394,732c59db135871058ab5d2958b693518de225a53642930aed31113bd49f97a6c

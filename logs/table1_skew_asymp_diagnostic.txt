@@ -1,0 +1,16 @@
+Table 1 Skew Asymptotic Comparison — diagnostic (Batch #3.6c)
+============================================================
+Executed at: 2026-09-05T00:53:47.436959Z
+L-level: L3_SIM (pure theory, no data)
+
+This is a static theoretical comparison table.
+No numerical computation was performed.
+
+Models compared:
+  1. BSM:              skew=0, tau->0=0, params=1 (sigma_0)
+  2. Heston:           skew=O(1), tau->0=finite, params=1 (nu)
+  3. Jump-diffusion:   skew=O(tau^{-1/2}), tau->0=inf, params=2 (lambda, mu_J)
+  4. Rough volatility: skew=O(tau^{H-1/2}), tau->0=inf if H<1/2, params=1 (H)
+  5. Quantum:          skew=O(tau^{-1}), tau->0=inf, params=1 (hbar_econ)
+
+No guards needed (pure theory, no data).

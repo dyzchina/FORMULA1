@@ -1,0 +1,125 @@
+% !TeX root = ../online_supplement.tex
+% Online Supplement Section S.1: Semiclassical WKB Expansion — Full Derivation
+% Extracted from main paper §4.3 (Semiclassical Expansion subsection) + proof details
+% v4.1 restructure (2026-08-30): migrated here to achieve ≤35 pp main paper target.
+
+\subsection{Assumption, Expansion, and Proof of Theorem~\ref{M-thm:effective-vol}}
+\label{sec:S1-wkb}
+
+The following assumption and detailed proof of the effective-volatility theorem
+are collected here to keep the main paper's Section~4 at theorem-statement level.
+
+\begin{assumption}[Semiclassical regime]
+The economic Planck constant satisfies $\hbar_{\mathrm{econ}} \ll 1$, and the
+market state $\rho$ is a perturbation of a classical state. Specifically, the
+Wigner function $W_\rho(x, p)$ of the market state admits an expansion
+\begin{equation}\label{eq:S.wigner-expansion}
+    W_\rho(x, p) = W_{\mathrm{cl}}(x, p) + \hbar_{\mathrm{econ}} W_1(x, p)
+    + \hbar_{\mathrm{econ}}^2 W_2(x, p) + \mathcal{O}(\hbar_{\mathrm{econ}}^3),
+\end{equation}
+where $W_{\mathrm{cl}}(x, p)$ is a classical probability density on the phase space
+$(x, p) \in \mathbb{R}^2$.
+\end{assumption}
+
+Under this assumption, the expectation of any observable $A \in \mathcal{A}$ expands as
+\begin{equation*}
+    \omega(A) = \int_{\mathbb{R}^2} a_{\mathrm{cl}}(x, p) W_{\mathrm{cl}}(x, p)
+    \, dx \, dp + \mathcal{O}(\hbar_{\mathrm{econ}}),
+\end{equation*}
+where $a_{\mathrm{cl}}(x, p)$ is the classical symbol of $A$.
+
+\begin{proof}[Full proof of Theorem~\ref{M-thm:effective-vol} (Effective implied volatility)]
+The proof proceeds in three steps.
+
+\textbf{Step 1: Phase-space representation.}
+The option price is
+$P_t = \operatorname{Tr}[\rho \, e^{-r\tau} \, \hat{G}]$, where
+$\hat{G} = (e^{\hat{X}_T} - K)_+$.
+By the Wigner--Weyl correspondence, this equals
+\begin{equation*}
+    P_t = e^{-r\tau} \int_{\mathbb{R}^2} g_{\mathrm{Weyl}}(x, p)
+    \, W_\rho(x, p) \, dx \, dp,
+\end{equation*}
+where $g_{\mathrm{Weyl}}$ is the Weyl symbol of $\hat{G}$.
+
+\textbf{Step 2: Moyal expansion.}
+The Wigner--Moyal expansion (see Appendix~A in the main paper) gives
+\begin{equation*}
+    g_{\mathrm{Weyl}}(x, p) = g_{\mathrm{cl}}(x, p)
+    + \frac{\he^2}{24} \{ g_{\mathrm{cl}}, \cdot \}_{\mathrm{Moyal}}
+    + \mathcal{O}(\he^4),
+\end{equation*}
+where $g_{\mathrm{cl}}(x) = (e^x - K)_+$ is the classical payoff function
+and the Moyal bracket is evaluated on the Wigner function.
+
+\textbf{Step 3: Semiclassical extraction.}
+Substituting \eqref{eq:S.wigner-expansion} and expanding term by term:
+\begin{equation*}
+    P_t = P_{\mathrm{BSM}}(\sigma_0)
+    + \he \cdot \underbrace{\int g_{\mathrm{cl}} W_1 \, dx\, dp}_{=:\, c_1}
+    + \he^2 \cdot \underbrace{\int g_{\mathrm{cl}} W_2 \, dx\, dp
+    + \int g_{\mathrm{Moyal}} W_{\mathrm{cl}} \, dx\, dp}_{=:\, c_2}
+    + \mathcal{O}(\he^3).
+\end{equation*}
+Identifying $c_1 = \gamma x / \tau$ and $c_2 = \beta / \tau^2$ from the GNS
+moments $\gamma = \omega([\hat{X}, \hat{P}]_+)$ and $\beta = \omega(\hat{X}^2)$,
+and inverting Black--Scholes to express the price correction as an implied-volatility
+correction, yields Theorem~\ref{M-thm:effective-vol}.
+\end{proof}
+
+\subsection{Skew Explosion and Sign Convention}
+\label{sec:S1-skew}
+
+\begin{corollary}[Skew explosion]
+For any $\hbar_{\mathrm{econ}} > 0$, the short-maturity skew diverges:
+$\lim_{\tau \to 0} \partial \sigma_{\mathrm{imp}} / \partial x = \infty.$
+\end{corollary}
+
+\begin{proof}
+Differentiating Theorem~\ref{M-thm:effective-vol} with respect to $x$ gives
+$\partial \sigma / \partial x = \he \gamma / (2\sigma \tau) + \mathcal{O}(\he^2)$,
+which diverges as $\tau^{-1}$ for fixed $\he, \gamma > 0$.
+\end{proof}
+
+The skew coefficient $\gamma := \omega([\hat{X}, \hat{P}]_+)$ is positive in the
+equity leverage-effect regime. Under log-moneyness $x = \ln(S/K)$, out-of-the-money
+puts ($x > 0$) exhibit elevated implied volatility, consistent with empirical
+observation. Calibration to the KRE options market on March 10, 2023 yields
+$\gamma = 0.51$ (Section~5 of the main paper, Figure~\ref{M-fig:coherence-2023}).
+
+\subsection{Quantum Optimal Hedge: Full Derivation}
+\label{sec:S1-hedge}
+
+\begin{proof}[Full proof of Proposition~\ref{M-prop:quantum-optimal-hedge}]
+The optimal hedge $\hat{\Pi}^*$ is expanded in powers of $\he$:
+$\hat{\Pi}^* = \hat{\Pi}_0 + \he \hat{\Pi}_1 + \mathcal{O}(\he^2)$.
+At order $\he^0$: the hedging--measurement duality reduces to the classical
+Föllmer--Sondermann least-squares hedge, giving $\hat{\Pi}_0 = \Delta_{\mathrm{BS}}(\sigma_0)$.
+At order $\he^1$: differentiating the inner product
+$\langle h^* | \Phi_t \rangle$ with respect to $\he$ and using the Wigner expansion
+for $\Phi_t$ yields a correction
+$\hat{\Pi}_1 = \Gamma_{\mathrm{BS}}(\sigma_0) \cdot \gamma \cdot x / \tau$,
+where $\Gamma_{\mathrm{BS}}$ is the Black--Scholes gamma. Combining gives
+Proposition~\ref{M-prop:quantum-optimal-hedge}.
+The detailed Moyal-bracket calculation is in Appendix~A of the main paper.
+\end{proof}
+
+\subsection{Bloch Sphere Worked Example}
+\label{sec:S1-bloch}
+
+The single-qubit market state $\rho_t$ is parameterized by a Bloch vector
+$\mathbf{r}_t = (r_x, r_y, r_z) \in \mathbb{R}^3$ with $\|\mathbf{r}_t\| \leq 1$:
+\begin{equation*}
+    \rho_t = \tfrac{1}{2}(\mathbf{1} + \mathbf{r}_t \cdot \boldsymbol{\sigma}),
+\end{equation*}
+where $\boldsymbol{\sigma} = (\sigma_x, \sigma_y, \sigma_z)$ are the Pauli matrices.
+Purity is $\|\mathbf{r}_t\|$: 1 for a pure state (zero entropy) and 0 for the
+maximally mixed state. The three macro-financial observables map to Pauli components
+via the empirical Pauli mapping of Appendix~\ref{app:empirical-methodology} below; full calibration
+details are in Section~5 of the main paper and Figure~\ref{M-fig:coherence-2023}.
+
+Under the Lindblad master equation, the Bloch vector evolves as
+$\dot{r}_i = \sum_j M_{ij} r_j + d_i$, where $M$ and $d$ are determined by
+the Lindblad operators $\{L_k\}$ (see Online Supplement Section~\ref{app:classical-limit}).
+During the 2023 banking crisis, $\|\mathbf{r}_t\|$ drops from $0.79$ to $0.05$
+at the peak of the SVB stress window, reflecting a near-maximally-mixed state.

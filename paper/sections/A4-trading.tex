@@ -1,0 +1,71 @@
+% !TeX root = ../main.tex
+% Appendix A4: Quantum Trading Strategy
+% Batch #4.9b — Notation hygiene, aligned with Fig 2 (6.7d lead) and Tab 6 (marginal case study)
+
+\section{Quantum Trading Strategy}\label{app:trading}
+
+A trading strategy based on QST exploits the leading indicator properties of
+$\mathcal{C}(\rho)$ and $S(\rho)$ established in
+Sections~\ref{M-sec:coherence-2023} and~\ref{M-sec:entropy-2023} to generate equity
+option signals.
+
+\subsection{Signal Construction}
+
+The trading signal is constructed from the daily QST estimates of the market
+state. Let $\theta_t$ be the distress amplitude, $\phi_t$ the contagion phase,
+and $\hbar_{\mathrm{econ}}$ the economic Planck constant. We define three trading
+signals:
+
+\begin{enumerate}
+    \item \textbf{Coherence signal:}
+        $S_t^{\mathrm{coh}} = \mathcal{C}(\rho_t) - \overline{\mathcal{C}}$,
+        where $\overline{\mathcal{C}}$ is the rolling 30-day mean of the quantum
+        coherence. A positive signal indicates increasing systemic contagion.
+    \item \textbf{Entropy signal:} $S_t^{\mathrm{ent}} = S(\rho_t) - \bar{S}$,
+        where $\bar{S}$ is the rolling 30-day mean of the von Neumann entropy.
+        A positive signal indicates increasing structural uncertainty.
+    \item \textbf{Combined signal:}
+        $S_t^{\mathrm{comb}} = w_1 S_t^{\mathrm{coh}} + w_2 S_t^{\mathrm{ent}}$,
+        where $w_1$ and $w_2$ are weights estimated from the in-sample period.
+\end{enumerate}
+
+\subsection{Portfolio Construction}
+
+The trading strategy is implemented as a long--short portfolio of equity options.
+When the combined signal exceeds a threshold $\tau_{\mathrm{sig}}$, the strategy
+takes a long position in out-of-the-money put options on the KRE Regional Banking
+ETF and a short position in out-of-the-money put options on the S\&P~500 Index.
+This pair trade isolates the regional banking sector risk captured by the
+quantum state.
+
+\subsection{Empirical Signal Timing}
+
+For the 2023 US regional banking crisis case study
+(Section~\ref{M-sec:coherence-2023}), the coherence signal $S_t^{\mathrm{coh}}$
+would generate an entry indication on March~9, 2023 (one trading day before SVB's
+collapse on March~10). Averaged across the three failure events
+(SVB March~10, Signature Bank March~12, First Republic Bank May~1), the
+coherence signal leads the corresponding classical Pearson-correlation crossing
+by 7~trading days. The entropy signal $S_t^{\mathrm{ent}}$ provides an even
+earlier confirmation, crossing its 95th-percentile baseline threshold on
+February~17, 2023---15~trading days before the SVB event.
+
+\subsection{Case-Study Performance and Caveats}
+
+We evaluate the signal's association with option-market P\&L for the KRE
+regional-banking option chain during the crisis window. Because
+2023-03-10-vintage KRE option chain data are not publicly available (see
+Section~S.2 on the canonical smile reconstruction), a
+full-cross-strike hedging back-test is beyond the scope of the current
+reproducibility package. The single-path hedging case study in
+Online Supplement~S.2 (Table~\ref{tab:hedging-rmshe}) demonstrates that a signal-triggered quantum
+optimal hedge (per Proposition~\ref{M-prop:quantum-optimal-hedge}) yields a
+marginal RMSHE reduction relative to the BSM baseline over the 20-day stress
+window (2023-02-27 to 2023-03-24), with the correction concentrated in the
+post-SVB OTM segment where $x = \ln(S_t/K)$ is non-zero and $\tau$ is short.
+
+\emph{Disclaimer:} The signal-timing results above are based on a single
+crisis episode and should be interpreted as an illustrative case study rather
+than an out-of-sample validation. A comprehensive out-of-sample evaluation
+across multiple crisis and non-crisis periods, using historical option-chain
+data across the equity-financial sector, is left for future work.

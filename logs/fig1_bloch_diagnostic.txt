@@ -1,0 +1,39 @@
+Fig 1 Bloch — regeneration diagnostic
+========================================
+Executed at: 2026-09-05T08:52:10.690950
+Axis version: v2 (refactored pipeline)
+Window: 2023-01-01 to 2023-06-30
+Trading days rendered: 124
+
+Data sources (with MD5 first-16):
+  VIX: D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\VIXCLS.csv  4d57221915cef1da
+  STLFSI4: D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\STLFSI4.csv  e7f4820960fb2cc0
+  HY-OAS: D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\BAMLH0A0HYM2.csv  611c67d946a303c4
+  EFFR: D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\DFF.csv  e4e71b0f36349309
+  KRE: D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\KRE.csv  662432c958a4600c
+  GSPC: D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\GSPC.csv  99fa4390802b9dcd
+  TED: D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\derived\TED_spliced_2004_2024.parquet  ebb9d02b11af6c8d
+  HY-OAS available from: 2023-05-22
+
+Bloch vector norm ||r_t||:
+  min:  0.0036
+  mean: 0.3943
+  max:  0.7857
+  std:  0.1956
+
+Entropy S(ρ_t):
+  min:  0.3405
+  mean: 0.5898
+  max:  0.6931
+
+Crisis events (Bloch vector at nearest trading day):
+  SVB (2023-03-10): nearest=2023-03-10, r=(0.4255, 0.0000, 0.2404), |r|=0.4887, S=0.5684
+  Signature (2023-03-12): nearest=2023-03-13 (offset 1d), r=(0.5093, 0.0000, -0.0784), |r|=0.5153, S=0.5538
+  First Republic (2023-05-01): nearest=2023-05-01, r=(-0.1226, 0.0000, 0.1100), |r|=0.1647, S=0.6795
+
+First date where ||r|| > 0.5: 2023-01-04
+First date where S > 0.5: 2023-01-03
+
+Figure files written:
+  figures/bloch_trajectory.pdf  (38150 bytes)
+  figures/bloch_trajectory.png  (162435 bytes)

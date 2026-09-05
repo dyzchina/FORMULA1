@@ -1,0 +1,109 @@
+% !TeX root = ../main.tex
+% Appendix B4: Empirical Methodology Details
+% Batch #4.9d — Notation hygiene, aligned with §5.1 data pipeline and Table 2
+
+\section{Empirical Methodology Details}\label{app:empirical-methodology}
+
+Additional details on the QST empirical methodology are provided below.
+
+\subsection{Data Sources and Preprocessing}\label{sec:data-sources}
+
+The macro-financial time series used in the QST framework are obtained from the
+following sources:
+
+\paragraph{Federal Reserve Economic Data (FRED):}
+\texttt{TEDRATE} (TED spread, real portion through 2022-01-21),
+\texttt{BAMLH0A0HYM2} (ICE BofA High Yield OAS, available from 2023-05-22 in
+our sample), \texttt{STLFSI4} (St.~Louis Fed Financial Stress Index, weekly),
+\texttt{EFFR} (Effective Federal Funds Rate), \texttt{VIXCLS} (CBOE Volatility
+Index). For dates after 2022-01-21, the TED spread is spliced with a SOFR $-$
+EFFR proxy (documented L2 quality) to maintain a continuous series through
+2024-12-31.
+
+\paragraph{Yahoo Finance:}
+\texttt{KRE} (SPDR S\&P Regional Banking ETF, from 2006-06-22), \texttt{JPM}
+(JPMorgan Chase \& Co.), \texttt{BAC} (Bank of America), \texttt{C} (Citigroup),
+\texttt{GS} (Goldman Sachs), \texttt{MS} (Morgan Stanley), \texttt{WFC} (Wells
+Fargo), \texttt{KBE} (SPDR S\&P Bank ETF), \texttt{XLF} (Financial Select Sector
+SPDR ETF), \texttt{\^{}GSPC} (S\&P~500 Index), \texttt{CL=F} (WTI Crude Oil
+Futures), \texttt{GC=F} (Gold Futures).
+
+All series are at daily frequency and span the intersection window
+2004-10-04 to 2024-12-31 (5{,}096 trading days). We standardize each series to
+zero mean and unit variance over the sample period to ensure comparability across
+the different measurement scales.
+
+\subsection{Observable-to-Pauli Mapping}\label{sec:pauli-mapping}
+
+The mapping from macro-financial observables to Pauli matrix coefficients is
+based on the economic interpretation of each series:
+\begin{itemize}
+    \item $\sigma_x$ (market stress axis): standardized average of VIX, STLFSI4,
+        and TED spread (spliced)
+    \item $\sigma_y$ (credit stress axis): standardized HY-OAS (BAMLH0A0HYM2);
+        set to zero for dates before 2023-05-22 when the series is unavailable
+    \item $\sigma_z$ (rates/equity axis): $0.5 \cdot (\text{EFFR}_z
+        - \text{GSPC returns}_z)$, so that positive $r_z$ corresponds to
+        monetary tightening plus equity sell-off
+\end{itemize}
+
+The coefficients are chosen a priori from the economic interpretation of each
+axis; a data-driven estimation of the Pauli map via regression on the observable
+panel is a natural extension left for future work.
+
+\subsection{$\hbar_{\mathrm{econ}}$ Calibration via Amihud Illiquidity}
+\label{sec:hbar-calibration}
+
+The economic Planck constant is calibrated from the microstructural relation
+$\hbar_{\mathrm{econ}} = \lambda \cdot q_0$, where $\lambda$ is Kyle's price
+impact parameter and $q_0$ is a reference order-flow scale. In our
+implementation:
+\begin{enumerate}
+    \item[(1)] Compute daily Amihud illiquidity for each of the ten
+        equity/ETF tickers in the Tier 1 panel:
+        $\text{Amihud}_{i,t} = |r_{i,t}| / (P_{i,t} \cdot V_{i,t})$, where
+        $r_{i,t}$ is the daily log-return, $P_{i,t}$ is the closing price,
+        and $V_{i,t}$ is the daily share volume.
+    \item[(2)] Take the 20-day moving average
+        $\overline{\text{Amihud}}_{i,t}^{20d}$ to smooth microstructure noise.
+    \item[(3)] Average across the ten tickers to obtain a panel-wide
+        $\overline{\text{Amihud}}_t$.
+    \item[(4)] Rescale so that the sample mean matches the canonical value
+        $\hbar_{\mathrm{econ}} = 0.062$:
+        $\hbar_{\mathrm{econ}}(t) = k \cdot \overline{\text{Amihud}}_t$,
+        where $k$ is the calibration constant.
+\end{enumerate}
+
+The resulting time series has AR(1) coefficient of $0.98$, confirming strong
+persistence consistent with the slow-moving nature of aggregate market
+microstructure liquidity (Table~\ref{tab:qst-stats}).
+
+\subsection{Optimization Algorithm}\label{sec:optimization}
+
+The QST optimization problem \eqref{eq:mst} is solved using a projected gradient
+descent algorithm on the Bloch ball. The algorithm iterates between:
+\begin{enumerate}
+    \item[(1)] A gradient step in the tangent space of the Bloch ball:
+        $\mathbf{r}_{k+1/2} = \mathbf{r}_k - \eta \nabla \mathcal{L}(\mathbf{r}_k)$,
+        where $\eta$ is the step size and $\mathcal{L}$ is the objective
+        function.
+    \item[(2)] A projection step that ensures the updated state remains within
+        the Bloch ball, followed by the smooth $\tanh$ normalization
+        $\mathbf{r} = \hat{\mathbf{r}}_{\mathrm{raw}}
+        \cdot \tanh(\|\mathbf{r}_{\mathrm{raw}}\|/s)$ with $s = 2.0$ to
+        eliminate degenerate pure-state artifacts.
+\end{enumerate}
+The regularization parameter $\eta_{\mathrm{reg}}$ in the objective
+\eqref{eq:mst} is selected by 5-fold cross-validation on the training period.
+
+\subsection{Standard Error Estimation}\label{sec:standard-errors}
+
+Standard errors for the QST parameters are estimated using a bootstrap
+procedure. We generate 1{,}000 bootstrap samples by resampling the
+macro-financial time series with a block length of 20 trading days
+(approximately one calendar month) to preserve the autocorrelation structure.
+The QST parameters are re-estimated on each bootstrap sample, and the
+standard errors are computed as the standard deviation of the bootstrap
+estimates. Bootstrap confidence intervals for the lead-lag results in
+Table~\ref{tab:lead-lag} use a block length of 10 trading days on the
+crisis-window residuals.

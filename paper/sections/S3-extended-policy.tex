@@ -1,0 +1,138 @@
+% !TeX root = ../main.tex
+% Section 7: Discussion and Policy Implications
+% Batch #4.7 — Post M1+M2 axis, notation hygiene, honest Tab 6 positioning
+
+\section{Discussion and Policy Implications}\label{sec:discussion}
+
+The multi-event lead structure of the quantum coherence signal $\mathcal{C}(\rho)$ over
+conventional Pearson correlation (Section~\ref{M-sec:coherence-2023})---ranging
+from contemporaneous for sudden failures to several weeks for gradually developing
+ones---and the
+15-trading-day lead of the von Neumann entropy $S(\rho)$ over the SVB failure
+event (Section~\ref{M-sec:entropy-2023}), carry theoretical and policy implications
+examined below.
+
+\subsection{The Economic Planck Constant as a Microstructural Liquidity Measure}
+\label{sec:hbar-liquidity}
+
+$\hbar_{\mathrm{econ}}$ offers a structural liquidity measure grounded in market
+microstructure theory. Unlike bid--ask spreads or volume-based metrics,
+$\hbar_{\mathrm{econ}}$ admits a direct interpretation as $\lambda \cdot q_0$,
+linking it to Kyle's price impact parameter. In our calibration
+(Section~\ref{M-sec:data-methodology}), the full-sample mean of
+$\hbar_{\mathrm{econ}}$ is 0.062, with time-series variation reflecting
+regime-dependent liquidity conditions in the U.S.\ banking sector.
+
+The measure complements conventional indicators in three respects: it derives from
+a structural model, aggregates information across multiple observables (via the
+Amihud illiquidity proxy applied to the ten-ticker equity/ETF panel), and connects
+directly to option pricing via the effective volatility expansion
+\eqref{M-eq:effective-vol}.
+
+\subsection{Quantum Coherence as an Early Warning Indicator}
+\label{sec:coherence-early-warning}
+
+$\mathcal{C}(\rho)$ functions as an early warning indicator because the
+non-commutative order-flow channel encodes correlations in $\rho$ before they
+appear in price data. The commutation relation \eqref{M-eq:weyl-ccr} generates
+institutional linkages through $\hat{P}$ that populate the density matrix ahead
+of observable market stress. In our March~2023 case study
+(Figure~\ref{M-fig:coherence-2023}), $\mathcal{C}(\rho_t)$ crosses its $+1\sigma$
+band on March~9---the day \emph{before} SVB's collapse---while the classical
+Pearson correlation between KRE and VIX crosses its $-1\sigma$ band on the same
+day. For the First Republic Bank failure on May~1, $\mathcal{C}(\rho_t)$ crosses
+its threshold on March~31, substantially before the Pearson threshold
+(May~1). Averaged across the three
+failure events, the coherence signal leads for gradually developing failures
+and responds contemporaneously for sudden ones.
+
+Real-time implementation is computationally feasible. The single-qubit
+parametrization reduces the QST reconstruction \eqref{M-eq:mst} to a
+three-dimensional convex problem solvable in milliseconds, making the framework
+suitable for regulatory monitoring at daily or intraday frequencies.
+
+\subsection{Policy Implications for Financial Stability}\label{sec:policy}
+
+The findings carry implications for three areas of financial stability policy.
+
+\paragraph{Macroprudential surveillance.}
+The QST framework provides a theoretically grounded methodology in which
+$\theta_t$ and $S(\rho)$ serve as systemic risk summary statistics, complementing
+SRISK \citep{brownlees2016srisk} and CoVaR \citep{adrian2016covar}. In particular,
+the von Neumann entropy's forward-looking property
+(Proposition~\ref{M-prop:granger-entropy}) contributes information not contained in
+lagged option-implied volatilities alone.
+
+\paragraph{Market microstructure regulation.}
+The economic Planck constant $\hbar_{\mathrm{econ}}$ provides a quantitative
+measure of aggregate market depth. Elevated $\hbar_{\mathrm{econ}}$ during
+crisis periods, driven by widening Amihud illiquidity across the banking sector,
+signals impaired liquidity provision that may warrant regulatory attention.
+Under the theoretical mapping $\hbar_{\mathrm{econ}} = \lambda \cdot q_0$,
+sustained elevation corresponds to persistent widening of Kyle's price-impact
+parameter across the panel.
+
+\paragraph{Crisis management.}
+The advance lead time of quantum coherence $\mathcal{C}(\rho)$ documented in
+Section~\ref{M-sec:coherence-2023} provides a policy-relevant window for
+pre-emptive intervention before systemic contagion registers in conventional
+correlation-based indicators. For First Republic, the coherence lead
+extends to several weeks in our sample (see the main paper §5.2 for the
+precise count). For the SVB and Signature failures, both the coherence signal
+and the classical Pearson benchmark cross their respective thresholds on March~9,
+2023---providing the same same-day early warning as conventional indicators while
+operating through a structurally distinct, non-commutative channel. In practical
+terms, a coherence-monitoring dashboard crossing its $+1\sigma$ band would have
+flagged the March~2023 crisis buildup on the closing prices of March~9, 2023.
+
+\subsection{Limitations and Future Research}\label{sec:limitations}
+
+The framework has several limitations worth noting.
+
+\paragraph{Dimensionality of the Hilbert space.}
+The single-qubit parametrization captures the distressed/non-distressed dichotomy
+but cannot represent multi-region configurations or sector-level heterogeneity.
+Extending to multi-qubit or continuous-variable representations is a natural
+generalization, though it raises computational challenges from exponential
+state-space growth and requires new identification strategies for higher-order
+observables.
+
+\paragraph{Data availability constraints.}
+The FRED HY-OAS series (BAMLH0A0HYM2) is available in our sample only from
+2023-05-22 onwards. For dates prior to this, our credit-stress axis $r_y$ is
+set to zero, and the coherence measure $\mathcal{C}(\rho) = \sqrt{r_x^2 + r_y^2}$
+reduces to $|r_x|$ during the pre-May-2023 portion of the crisis window. This
+truncation attenuates the coherence signal in the earliest portion of the crisis;
+extending the HY-OAS series backward via alternative data sources (Bloomberg,
+Refinitiv) would strengthen the pre-May signal.
+
+\paragraph{Multi-underlying calibration.}
+The IV-surface calibration in Section~\ref{sec:iv-surface} uses a canonical
+banking-crisis reference smile calibrated to KRE. Extending to JPM and SPY in
+Table~\ref{tab:iv-calibration} incurs a projection error, since the reference
+$(a, b)$ parameters were not re-optimized per underlying. A multi-underlying
+joint calibration with underlying-specific smile parameters is deferred to
+future work.
+
+\paragraph{Hedging performance in single-path case study.}
+The 20-day hedging case study (Table~\ref{tab:hedging-rmshe}) demonstrates a
+marginal ($\approx 0.75\%$) improvement of the quantum optimal hedge over the
+BSM baseline. This magnitude reflects the specific $(x_t, \tau_t)$ configuration
+of the SVB stress path. Proposition~\ref{M-prop:quantum-optimal-hedge} provides the
+closed-form basis for larger improvements when the option is deeper OTM and
+$\tau$ shorter (i.e., when the correction term
+$\hbar_{\mathrm{econ}} \Gamma_{\text{BS}} \gamma x/\tau$ dominates). A
+cross-strike, cross-maturity hedging comparison over multiple stress episodes
+would establish the empirical distribution of improvements more broadly.
+The Lindblad master equation \eqref{M-eq:lindblad} is currently phenomenological.
+Deriving the Lindblad operators from limit order book dynamics, market maker
+behavior, and information asymmetry would strengthen the theoretical
+foundations.
+
+\paragraph{Extension to American and exotic derivatives.}
+The framework currently treats European-style claims. Extending to American
+options with optimal exercise and path-dependent derivatives is an important
+direction for both theory and practice.
+
+Each direction constitutes a research program in its own right. We offer the
+present framework as a foundation for these extensions.

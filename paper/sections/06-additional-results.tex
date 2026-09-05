@@ -1,0 +1,29 @@
+% !TeX root = ../main.tex
+% Section 6: Additional Empirical Results and Robustness
+% v4.1 (2026-08-30): Full content migrated to Online Supplement §S.2
+% Main paper retains a one-paragraph pointer for ≤35 pp compliance.
+
+\section{Additional Empirical Results}\label{sec:additional-results}
+
+Additional robustness checks, a comparison with alternative crisis indicators
+(VIX, TED spread, KRE price), implied volatility surface calibration,
+delta-hedging performance, and skew-asymptotic model
+comparisons are reported in Online Supplement~S.2. We summarize the
+key findings here.
+
+\paragraph{Robustness.} Three stability tests (alternative Pauli mappings, subsample
+splits, qutrit parametrization) confirm that the QST coherence measure is stable
+across $\pm 10\%$ perturbations and across non-overlapping 2004--2024 subsamples
+(OS~Section~\ref{OS-sec:robustness-checks}).
+
+\paragraph{Crisis indicator comparison.} The quantum distress amplitude $\theta_t$
+peaks at $0.9993$ (GFC, 2008-10-15), $0.9955$ (COVID, 2020-03-16), and $0.8687$
+(2023 banking crisis, 2023-05-24), distinguishing all three crises
+(OS~Figure~\ref{OS-fig:indicator-comparison}).
+
+\paragraph{Option surface and hedging.} Calibration to the KRE options surface
+(canonical March 10, 2023 parameterization, $\hat\sigma_{60d} = 28.41\%$) yields
+$\he = 0.087$ and $\gamma = 0.51$ (OS~Figure~\ref{OS-fig:iv-smile}). The quantum optimal hedge
+achieves $555.9$ bps RMSHE versus BSM $560.1$ bps in the SVB stress window, with
+improvement concentrated in out-of-the-money regimes where
+$\he\Gamma_{\text{BS}}\gamma x/\tau$ dominates (OS~Table~\ref{OS-tab:hedging-rmshe}).

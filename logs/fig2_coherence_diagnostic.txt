@@ -1,0 +1,50 @@
+Fig 2 Coherence — regeneration diagnostic
+========================================
+Executed at: 2026-09-05T08:52:15.591973
+Axis version: v2
+Window: 2023-01-01 to 2023-06-30
+Trading days: 124
+
+C(ρ_t) statistics:
+  min:  0.0022
+  mean: 0.2374
+  max:  0.7748
+  Date of max: 2023-03-17
+
+Pearson correlation (30-day rolling, KRE vs VIX):
+  min:  -0.7904
+  mean: -0.5241
+  max:  -0.1411
+  Date of min (most negative): 2023-05-05
+  Date of max: 2023-06-30
+
+Data sources with MD5:
+  KRE:  D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\KRE.csv  662432c958a4600c
+  VIX:  D:\VIVIVI论文SCI（20260910H）\SCI之金融数学（20260706）\reproducible_package_v6.0\data\raw\all\FRED_VIXCLS.csv  7ff868fdefe389b8
+  (Bloch pipeline inputs: see fig1_bloch_diagnostic.txt)
+
+Exceedance analysis (bidirectional for Pearson):
+  ---
+  SVB failure (2023-03-10):
+    Most recent C(ρ_t) exceedance before or on event:      2023-03-09 (value 0.1683)
+    Most recent Pearson exceedance before or on event:     2023-03-09 (value -0.6534)
+    Lead of C over Pearson: 0 trading days
+  ---
+  Signature failure (2023-03-12):
+    Most recent C(ρ_t) exceedance before or on event:      2023-03-09 (value 0.1683)
+    Most recent Pearson exceedance before or on event:     2023-03-09 (value -0.6534)
+    Lead of C over Pearson: 0 trading days
+  ---
+  First Republic failure (2023-05-01):
+    Most recent C(ρ_t) exceedance before or on event:      2023-03-09 (value 0.1683)
+    Most recent Pearson exceedance before or on event:     2023-05-01 (value -0.5998)
+    Lead of C over Pearson: 37 trading days
+
+Empirical claim verification ("~7 day lead"):
+  Average lead across 3 events: 12.3 trading days
+  Target range: 4–10 trading days (paper says "approximately seven")
+  Verdict: MARGINAL (outside 4-10 range)
+
+Figure files:
+  figures/coherence_2023.pdf  (22808 bytes)
+  figures/coherence_2023.png  (193971 bytes)

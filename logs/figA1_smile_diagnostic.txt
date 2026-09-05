@@ -1,0 +1,26 @@
+Fig A.1 IV Smile — regeneration diagnostic (Batch #3.5f, gamma sign flipped)
+====================================================================================
+Executed at: 2026-09-05T00:52:37.169133Z
+L-level: L2_PROXY (canonical equity-crisis reference; no historical KRE options chain)
+Methodology: canonical smile a*m + b*m^2 (replaces unstable Heston calibration)
+
+KRE reference data:
+  Source: KRE.csv (md5 662432c958a4600c)
+  Reference date: 2023-03-09
+  KRE spot S0: 53.0200
+  sigma_realized (60d annualized): 0.2841
+
+Reference smile parameters (fixed):
+  a (skew):      -0.5
+  b (curvature): 1.0
+  ATM term structure: sigma_realized * (1 + 0.05 * (1 - exp(-tau/0.1)))
+
+Quantum model parameters (from paper Table 4 KRE row):
+  sigma_0 = 0.2841
+  hbar_econ = 0.087
+  gamma = 0.51
+  beta = 0.001
+
+Figure files:
+  figures/real_vs_model_smile.pdf (20549 bytes, md5 d7b09733b341182c)
+  figures/real_vs_model_smile.png (191035 bytes, md5 85f9413d56dae7c3)

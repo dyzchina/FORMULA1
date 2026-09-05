@@ -1,0 +1,26 @@
+\begin{table}[htbp]
+\centering
+\caption{Lead-lag analysis: quantum distress amplitude $\theta_t$ vs.\ nine conventional indicators during the 2023 US regional banking crisis (2023-01-01 to 2023-06-30). Positive lag indicates that $\theta_t$ leads the indicator by that many trading days. Note: the leading indicator documented in the main text is the quantum coherence $\mathcal{C}(\rho_t)$, not $\theta_t$; the two measures are complementary.}
+\label{tab:lead-lag}
+\begin{tabular}{lrrrr}
+\hline
+Indicator & N & Max.\ $|\text{corr}|$ & Lead (days) & 95\% CI \\
+\hline
+  KRE (Regional Banking ETF)     & 124 & 0.31 & 0 & [-24, 26] \\
+  VIX                            & 124 & -0.56 & -1 & [-27, 25] \\
+  TED Spread                     & 0 & --- & --- & --- \\
+  HY-OAS$^{\dagger}$             & 30 & --- & --- & --- \\
+  STLFSI4$^{\ddagger}$           & 26 & --- & --- & --- \\
+  S\&P 500 Index                 & 124 & 0.55 & 0 & [0, 0] \\
+  JPM (JPMorgan Chase)           & 124 & 0.31 & 0 & [-11, 18] \\
+  EFFR                           & 124 & 0.68 & -12 & [-20, 25] \\
+  Gold Futures (GC=F)            & 124 & -0.23 & -11 & [-29, 29] \\
+\hline
+\end{tabular}
+
+\medskip
+\footnotesize
+\textit{Note}: Cross-correlation computed on $\pm 30$ trading-day lag sweep. Lead $< 0$ indicates $\theta_t$ \emph{lags} the indicator. Confidence intervals from block-bootstrap ($B=1000$, block length = 10 days) on the crisis-window residuals. $\theta_t = \|\mathbf{r}_t\|$ is the Bloch vector norm; negative leads for VIX and KRE indicate these price-based measures move before $\theta_t$, consistent with $\theta_t$ capturing structural uncertainty rather than price-level stress. The 95\% bootstrap CI for S\&P~500 collapses to $[0,0]$: the correlation peaks at lag~0 across virtually all bootstrap replications, indicating contemporaneous co-movement with no identifiable lead--lag structure.\\
+$^{\dagger}$ HY-OAS data available from 2023-05-22; N reflects the truncated sub-window.\\
+$^{\ddagger}$ STLFSI4 is a weekly series; N reflects distinct weekly observations.
+\end{table}

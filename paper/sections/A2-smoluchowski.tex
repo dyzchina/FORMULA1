@@ -1,0 +1,34 @@
+% !TeX root = ../main.tex
+% Appendix A2: Smoluchowski Limit and the Classical Diffusion Coefficient
+% Batch #4.9a — Notation hygiene
+
+\section{Smoluchowski Limit and the Classical Diffusion Coefficient}
+\label{app:smoluchowski}
+
+When market depth $M$ is small relative to friction $\gamma_f$, momentum relaxes
+rapidly and the dynamics reduce to the Smoluchowski equation for $p(x, t)$. This
+limit applies because order-flow adjustment (minutes to hours) is much faster
+than option maturity (days to months).
+
+The Smoluchowski limit of the quantum-corrected Fokker--Planck equation from
+Appendix~\ref{app:moyal} yields an effective diffusion coefficient:
+\begin{equation*}
+    D_{\mathrm{eff}} = \frac{k_B T}{\gamma_f M}
+    \left( 1 + \frac{\hbar_{\mathrm{econ}}^2}{12} \frac{V'''(x)}{V'(x)}
+    + \mathcal{O}(\hbar_{\mathrm{econ}}^4) \right),
+\end{equation*}
+where $k_B T$ is the thermal energy scale (interpreted as the fundamental
+volatility scale in financial markets) and $\gamma_f$ is the friction coefficient
+(interpreted as the rate of mean reversion of order flow).
+
+The classical diffusion coefficient $\sigma_0^2$ in \eqref{M-eq:effective-vol} is
+identified with the leading-order term:
+\begin{equation*}
+    \sigma_0^2 = \frac{2 k_B T}{\gamma_f M}.
+\end{equation*}
+
+The quantum correction to the diffusion coefficient is proportional to
+$\hbar_{\mathrm{econ}}^2$ and depends on the curvature of the confining potential
+$V(x)$. This correction is responsible for the
+$\hbar_{\mathrm{econ}}^2 \cdot \beta / \tau^2$ term in the effective implied
+volatility expansion \eqref{M-eq:effective-vol}.

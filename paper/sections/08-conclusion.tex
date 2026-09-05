@@ -1,0 +1,83 @@
+% !TeX root = ../main.tex
+% Section 8: Conclusion
+% Batch #4.8 — Post M1+M2 axis, notation hygiene
+% v4.0 revision (2026-08-30): F1-F6 narrative-closure micro-edits applied.
+%   F1 two-pillar demotion of Lindblad; F2 15-day claim demoted to additional
+%   signal; F3 VIX first-differences backstop; F4 polynomial-time restatement;
+%   F5 risk-regime-barometer terminology restored; F6 Weyl-Heisenberg dash
+%   unified with Introduction. Abstract and Introduction remain axis-frozen.
+
+\section{Conclusion}\label{sec:conclusion}
+
+This paper develops a non-commutative quantum probability framework for option
+pricing under market microstructural friction. The framework rests on two
+pillars: the Weyl-Heisenberg algebra
+$[\hat{X}, \hat{P}] = i\hbar_{\mathrm{econ}} \mathbf{1}$ and the GNS Hilbert
+space pricing formula $P = \langle H^* | \Phi \rangle e^{-rT}$; the market
+state's temporal evolution is governed by a Lindblad master equation
+(Section~\ref{sec:weyl-heisenberg}). The economic Planck constant
+$\hbar_{\mathrm{econ}} = \lambda \cdot q_0$ links the framework to Kyle's price
+impact parameter, providing a direct microstructural interpretation.
+
+The theoretical contributions are threefold. First, variance-optimal hedging
+under price impact is equivalent to a quantum measurement, with the optimal
+hedge given by the orthogonal projection of the payoff onto the hedgeable
+subspace (Theorem~\ref{thm:existence-hedge}, Theorem~\ref{thm:hedging-measurement}).
+Second, the leading-order quantum correction to the implied volatility surface,
+derived via WKB expansion (Theorem~\ref{thm:effective-vol}), produces a universal
+$\mathcal{O}(\tau^{-1})$ short-maturity skew divergence---distinct from the
+bounded skew of Black--Scholes--Heston and the $\mathcal{O}(\tau^{H-1/2})$
+scaling of rough volatility. Third, the non-commutative pricing formula
+interpolates between the classical Black--Scholes price in the commutative
+limit $\hbar_{\mathrm{econ}} \to 0$ and a quantum-corrected price with
+$\mathcal{O}(\hbar_{\mathrm{econ}})$ corrections in the presence of
+microstructural friction.
+
+The empirical results yield three findings. First, the quantum coherence
+$\mathcal{C}(\rho_t)$, defined as the $\ell_1$-norm of the off-diagonal
+elements of the reconstructed density matrix, provides a forward-looking
+early-warning signal that leads the classical Pearson correlation between
+KRE and VIX by several weeks for gradually developing failures and by a
+contemporaneous response for sudden ones---as documented in the 2023 US
+regional banking crisis case study (Silicon Valley Bank on March~10,
+Signature Bank on March~12, and First Republic Bank on May~1)---and by a
+comparable margin over the VIX first-differences benchmark
+(Section~\ref{sec:additional-results}). Second, as an additional
+entropy-based signal, the von Neumann entropy
+$S(\rho_t)$ crosses its 95th-percentile baseline threshold 15~trading days
+(approximately three weeks) before the SVB failure of March~10, 2023,
+providing an even earlier warning signal that Granger-causes changes in
+KRE option-implied volatility. Third, the quantum optimal hedge from
+Proposition~\ref{prop:quantum-optimal-hedge} reduces hedging errors relative
+to both Black--Scholes and Heston benchmarks during a stress-window case study, with the
+improvement concentrated in out-of-the-money regimes where the microstructural
+correction $\hbar_{\mathrm{econ}} \Gamma_{\text{BS}} \gamma x / \tau$ is
+non-negligible.
+
+The empirical implementation of these results relies on Quantum State
+Tomography (QST): the daily density operator $\rho_t$ is reconstructed
+from observable macro-financial moments via a strictly convex semidefinite
+program that is solvable in polynomial time via off-the-shelf convex
+optimization solvers, yielding a positive-semidefinite, unit-trace state
+without heuristic parameter calibration.
+
+Several directions merit further work. Extending the single-qubit
+parametrization to multi-qubit or continuous-variable representations is
+conceptually natural but raises computational challenges. Developing dynamic,
+data-driven mappings from macro-finance observables to Pauli coefficients
+would enhance adaptability across asset classes. Out-of-sample validation on
+the 2008 Global Financial Crisis (with an alternative credit-spread
+observable, given HY-OAS data limitations), the 2011 European Debt Crisis,
+and the 2020 COVID-19 pandemic would test generalizability. Extending the
+framework to American options, exotic derivatives, and multi-asset structured
+products represents a further direction for both theory and practice.
+
+The non-commutative quantum probability framework addresses three structural
+puzzles in derivatives pricing: operator ordering ambiguity under price
+impact, the $\mathcal{O}(\tau^{-1})$ short-maturity skew divergence, and the
+inability of conventional risk frameworks to capture systemic contagion. In
+practical use, the framework operates as a forward-looking risk-regime
+barometer, complementing rather than replacing existing volatility- and
+correlation-based indicators. The results suggest that non-commutative methods
+offer a promising direction for bridging mathematical finance theory with the
+empirical complexity of financial markets under microstructural constraints.

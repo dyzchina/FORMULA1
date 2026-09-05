@@ -1,0 +1,21 @@
+Table 5 Model Comparison — diagnostic (Batch #3.6e — 1-param rollback)
+============================================================
+Executed at: 2026-09-05T00:53:44.106958Z
+L-level: L3_SIM (Monte Carlo synthetic data from Quantum DGP)
+Seed: 42
+Replications: 500
+Grid points: 100 (80 train, 20 test)
+Noise std: 0.50 vol pts
+True DGP: Quantum (sigma_0=0.2841, hbar=0.087, gamma=0.51, beta=0.001)
+QST: 1-param fit (hbar_econ only), sigma_0=0.2841, gamma=0.51, beta=0.001 fixed
+
+--- Results ---
+Heston: RMSE_in=9.74%, RMSE_oos=10.18%, k=5, BIC=-350.8, valid_reps=500
+SABR: RMSE_in=12.09%, RMSE_oos=12.01%, k=2, BIC=-329.4, valid_reps=500
+Rough volatility: RMSE_in=22.27%, RMSE_oos=22.12%, k=1, BIC=-236.0, valid_reps=500
+Quantum (QST): RMSE_in=20.36%, RMSE_oos=19.97%, k=1, BIC=-250.4, valid_reps=500
+
+--- Guard results ---
+G1 (all in-sample RMSE < 15 vol pts): FAIL
+G2 (all OOS RMSE < 20 vol pts): FAIL
+G3 (QST BIC < Heston BIC): FAIL

@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Convergence of quantum delta to Black-Scholes-Merton delta as $\hbar_{\mathrm{econ}} \to 0$. Parameters: $S=38$, $K=40$, $\tau=30$ days, $r=4.5\%$, $\sigma_0=0.35$, $\gamma=0.51$.}
+\label{tab:delta-convergence}
+\begin{tabular}{lccc}
+\hline
+$\hbar_{\mathrm{econ}}$ & $\Delta_{\mathrm{QM}}$ & $\Delta_{\mathrm{BS}}$ & Relative error \\
+\hline
+$0.15$ & $0.3718$ & $0.3745$ & $0.73\%$ \\
+$0.10$ & $0.3727$ & $0.3745$ & $0.48\%$ \\
+$0.05$ & $0.3736$ & $0.3745$ & $0.24\%$ \\
+$0.01$ & $0.3743$ & $0.3745$ & $0.05\%$ \\
+$0.00$ & $0.3745$ & $0.3745$ & $0.00\%$ \\
+\hline
+\end{tabular}
+
+\medskip
+\footnotesize
+\textit{Note}: The quantum delta converges to the BSM delta as $\hbar_{\mathrm{econ}} \to 0$, confirming that the correction term $\hbar_{\mathrm{econ}} \cdot \Gamma_{\mathrm{BS}} \cdot \gamma \cdot x/\tau$ vanishes in the classical limit. At $\hbar_{\mathrm{econ}}=0$, the two deltas coincide exactly.
+\end{table}

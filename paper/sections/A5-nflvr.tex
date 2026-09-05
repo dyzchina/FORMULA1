@@ -1,0 +1,82 @@
+% !TeX root = ../main.tex
+% Appendix A5: NFLVR and the GNS Construction
+% Batch #4.9b — Notation hygiene
+
+\section{No-Free-Lunch-with-Vanishing-Risk and the GNS Construction}
+\label{app:nflvr}
+
+This appendix connects the NFLVR condition of classical mathematical finance
+\citep{delbaen1994general} to the GNS construction. NFLVR is the standard
+no-arbitrage condition in continuous-time finance; its equivalence to a faithful
+normal state on the observable algebra provides the economic foundation for the
+quantum pricing framework.
+
+\begin{definition}[NFLVR in the quantum setting]\label{def:nflvr}
+Let $\mathcal{A}$ be the market observable algebra and let $\omega$ be a market
+state. The market \emph{violates} the no-free-lunch-with-vanishing-risk (NFLVR)
+condition if there exists a sequence of admissible strategies
+$\{H_n\}_{n=1}^\infty \subset \mathcal{A}$ (an asymptotic arbitrage sequence)
+such that
+\begin{equation*}
+    \omega(H_n^* H_n) \to 0
+    \quad\text{(vanishing cost)}
+    \quad\text{and}\quad
+    \liminf_{n\to\infty}\,\omega\bigl((H_n - \varepsilon)_+\bigr) > 0
+    \quad\text{(bounded profit)}
+\end{equation*}
+for some $\varepsilon > 0$. The market \emph{satisfies} NFLVR if and only if no
+such sequence exists.
+\end{definition}
+
+\begin{theorem}[NFLVR implies GNS faithfulness]\label{thm:nflvr-gns}
+If the market satisfies the NFLVR condition, then the market state $\omega$ is
+faithful, and the GNS representation $\pi_\omega$ is injective. Consequently, the
+pricing formula \eqref{M-eq:pricing-master} is well-defined and strictly positive
+for all non-zero non-negative payoffs.
+\end{theorem}
+
+\begin{proof}
+We verify the conditions required for Gleason's theorem before applying it.
+
+\emph{Step 1 (von Neumann algebra type).} The GNS representation
+$\pi_\omega(\mathcal{A})$ of the Weyl algebra $\mathcal{A}$ is known to be
+irreducible in the Schr\"{o}dinger representation, so its von Neumann
+algebra double commutant is $\mathcal{B}(\mathcal{H}_\omega)$, a Type I
+factor \citep{bratteli1981operator}. Gleason's theorem applies to Type I
+factors on separable Hilbert spaces of dimension $\geq 3$ \citep{gleason1957measures},
+which is satisfied since $\mathcal{H}_\omega \simeq L^2(\mathbb{R})$ is
+infinite-dimensional.
+
+\emph{Step 2 (Complete additivity).} A state $\omega$ is completely additive
+on the projection lattice if and only if it is \emph{normal} (ultraweakly
+continuous) as a functional on the von Neumann algebra
+$\mathcal{B}(\mathcal{H}_\omega)$ \citep{bratteli1981operator}. We establish
+normality via the NFLVR condition as follows. NFLVR implies that the pricing
+functional $\omega : \mathcal{A} \to \mathbb{R}$ extends to a bounded
+positive linear functional on the von Neumann algebra
+$\pi_\omega(\mathcal{A})'' = \mathcal{B}(\mathcal{H}_\omega)$.
+Since $\mathcal{B}(\mathcal{H}_\omega)$ is a Type I factor on a separable
+Hilbert space, every bounded positive linear functional is automatically
+normal (this is standard: on $\mathcal{B}(\mathcal{H})$, positive
+functionals are of the form $\mathrm{Tr}(\rho\,\cdot)$ for trace-class $\rho$,
+hence ultraweakly continuous). Therefore $\omega$ is normal, hence completely
+additive on projections. This is the hypothesis required by Gleason's theorem.
+
+\emph{Step 3 (Conclusion).} By Gleason's theorem, any completely additive
+probability measure on the projection lattice of $\mathcal{B}(\mathcal{H}_\omega)$
+is of the form $P \mapsto \operatorname{Tr}(\rho P)$ for a unique positive
+trace-class operator $\rho$ with $\operatorname{Tr}(\rho) = 1$. This is a
+normal state. The existence of a cyclic and separating vector then follows
+from the Tomita--Takesaki theory applied to the faithful normal state
+$\omega(\cdot) = \operatorname{Tr}(\rho\,\cdot)$.
+\end{proof}
+
+This theorem establishes that the GNS construction is well-defined for any market
+satisfying the non-commutative NFLVR condition, providing the rigorous
+mathematical foundation for the State--Hedge pricing formula
+\eqref{M-eq:pricing-master} in general market settings. In our empirical
+calibration (Section~\ref{M-sec:empirical-calibration}), the strictly positive
+$\hbar_{\mathrm{econ}} > 0$ regime ensures that the market observable algebra
+$\mathcal{A}$ is simple, so all its representations are faithful, and
+Theorem~\ref{M-thm:fundamental} guarantees absence of quantum arbitrage
+irrespective of the specific NFLVR sequence structure.

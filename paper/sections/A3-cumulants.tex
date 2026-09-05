@@ -1,0 +1,73 @@
+% !TeX root = ../main.tex
+% Appendix A3: Cumulant Expansion of the Implied Volatility Surface
+% Batch #4.9a — Notation hygiene
+
+\section{Cumulant Expansion of the Implied Volatility Surface}\label{app:cumulants}
+
+Equation \eqref{M-eq:effective-vol} follows from a cumulant expansion of the
+log-return characteristic function
+\citep{jarrow1982approximate,corrado1996skewness,backus2004accounting}. Let
+$\varphi(u) = \mathbb{E}[e^{iu X_T}]$ for $X_T = \ln(S_T/S_0)$, with cumulant
+generating function $\psi(u) = \ln \varphi(u)$.
+
+In the quantum framework, the characteristic function is computed from the Wigner
+function:
+\begin{equation*}
+    \varphi(u) = \int e^{iux} p(x, T) \, dx
+    = \int e^{iux} W(x, p, T) \, dx \, dp.
+\end{equation*}
+
+The cumulant expansion of the implied volatility is obtained by matching the
+characteristic function of the quantum model to the BSM characteristic function
+and solving for the volatility that equates the option prices. The first few
+cumulants of the quantum model are:
+\begin{align}
+    \kappa_1 &= \mu T, \label{eq:cumulant-1} \\
+    \kappa_2 &= \sigma_0^2 T + \hbar_{\mathrm{econ}}^2 \cdot \beta
+        + \mathcal{O}(\hbar_{\mathrm{econ}}^4), \label{eq:cumulant-2} \\
+    \kappa_3 &= \hbar_{\mathrm{econ}} \cdot \gamma T
+        + \mathcal{O}(\hbar_{\mathrm{econ}}^3), \label{eq:cumulant-3} \\
+    \kappa_4 &= \mathcal{O}(\hbar_{\mathrm{econ}}^2), \label{eq:cumulant-4}
+\end{align}
+where $\mu$ is the drift, $\sigma_0^2$ is the classical variance,
+$\gamma = \omega([\hat{X},\hat{P}]_+)$ and
+$\beta = \omega(\hat{X}^2)$ are the quantum correction coefficients
+from \eqref{M-eq:effective-vol}. Note that $\kappa_2^{(\hbar^2)} =
+\hbar_{\mathrm{econ}}^2\beta$ is time-independent at this order.
+To reconcile with Appendix~\ref{app:moyal} Step~2, where the variance
+correction is $2\hbar^2\beta_1 = \hbar^2\beta/\tau$ (via $\beta_1=\beta/(2\tau)$):
+since $\kappa_2 = \sigma^2_{\mathrm{imp}}\cdot T$ (variance $\times$ horizon $T=\tau$),
+a variance correction $\delta\sigma^2 = \hbar^2\beta/\tau$ gives
+$\delta\kappa_2 = \delta\sigma^2\cdot T = \hbar^2\beta$, consistent with
+$\kappa_2^{(\hbar^2)} = \hbar^2\beta$ here. The two representations are
+therefore equivalent; the $\tau^{-2}$ factor in the smile formula
+\eqref{eq:full-smile-correction} arises from the BSM inversion step in
+Appendix~\ref{app:moyal} Step~3.
+
+The skewness $\kappa_3 / \kappa_2^{3/2}$ diverges as $\mathcal{O}(T^{-1/2})$
+when $T \to 0$. This is a \emph{different observable} from the skew slope
+$\partial \sigma_{\mathrm{imp}}/\partial x$ discussed in the main text. The
+two quantities are related but distinct:
+
+\begin{itemize}
+\item The \textbf{standardized skewness} $\kappa_3/\kappa_2^{3/2}$
+  diverges as $\mathcal{O}(T^{-1/2})$ because $\kappa_3 \propto T$ while
+  $\kappa_2^{3/2} \propto T^{3/2}$, giving $T/T^{3/2} = T^{-1/2}$.
+
+\item The \textbf{skew slope} $\partial\sigma_{\mathrm{imp}}^2/\partial x$,
+  defined as the moneyness derivative of implied variance, is given by
+  $\hbar_{\mathrm{econ}}\gamma/\tau$ from~\eqref{eq:full-smile-correction},
+  which diverges as $\mathcal{O}(\tau^{-1})$.
+\end{itemize}
+
+The $\mathcal{O}(T^{-1})$ divergence of the skew slope---claimed in
+Corollary~\ref{M-cor:skew-explosion} and central to the empirical predictions
+of the paper---arises directly from differentiating the smile formula with
+respect to log-moneyness $x$, not from the cumulant ratio. The cumulant
+$\kappa_3$ characterises the overall distributional skewness; the smile
+slope characterises the local moneyness sensitivity. Both diverge as
+$T \to 0$ but at different rates, which is consistent: the $T^{-1}$ slope
+is steeper than the $T^{-1/2}$ skewness, reflecting the non-linear BSM
+inversion from log-return distribution to implied volatility surface.
+The kurtosis $\kappa_4 / \kappa_2^2$ remains $\mathcal{O}(1)$, distinguishing the quantum model from
+jump-diffusion models where the kurtosis diverges as $\mathcal{O}(T^{-1})$.

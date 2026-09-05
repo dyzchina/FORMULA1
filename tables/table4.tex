@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\caption{Quantum model calibration parameters for three underlying assets, calibrated to 60-day realized volatility ending 2023-03-09.}
+\label{tab:iv-calibration}
+\begin{tabular}{lrrrr}
+\hline
+Instrument & $\sigma_0$ & $\hbar_{\mathrm{econ}}$ & RMSE (vol pts) & $\gamma$ \\
+\hline
+JPMorgan Chase (JPM)                               & 0.2109 & 0.036262 & 9.5 & 0.51 \\
+KRE (Regional Banking ETF)                         & 0.2170 & 0.087000 & 13.1 & 0.51 \\
+S\&P 500 Index (SPY)                               & 0.1273 & 0.001889 & 11.0 & 0.51 \\
+\hline
+\end{tabular}
+
+\medskip
+\footnotesize
+\textit{Note}: $\sigma_0$ is the 60-day realized volatility (annualized). $\hbar_{\mathrm{econ}}$ scales with the ratio of underlying-specific Amihud illiquidity to KRE's Amihud. $\gamma$ is fixed at 0.51 (equity leverage regime). RMSE is the root-mean-square error between the quantum smile and the canonical reference smile at $\tau \in \{7, 14, 30, 60\}$ days.
+\end{table}

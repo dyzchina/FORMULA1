@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+\centering
+\caption{Model comparison: in-sample fit and out-of-sample performance for equity option implied volatility surfaces (Monte Carlo synthetic test with Quantum-smile DGP, 100-point $(K,\tau)$ grid, 500 replications). Quantum model uses 1-parameter fit ($\hbar_{\mathrm{econ}}$ only) with $\sigma_0=0.2841$, $\gamma=0.51$, $\beta=0.001$ fixed a-priori from KRE calibration.}
+\label{tab:model-comparison}
+\begin{tabular}{lrrrr}
+\hline
+Model & In-sample RMSE (vol pts) & OOS RMSE (vol pts) & \# params & BIC \\
+\hline
+Heston                    & 9.7 & 10.2 & 5 & -350.8 \\
+SABR                      & 12.1 & 12.0 & 2 & -329.4 \\
+Rough volatility          & 22.3 & 22.1 & 1 & -236.0 \\
+Quantum (QST)             & 20.4 & 20.0 & 1 & -250.4 \\
+\hline
+\end{tabular}
+
+\medskip
+\footnotesize
+\textit{Note}: RMSE reported in implied volatility percentage points. BIC is Bayesian Information Criterion; lower is better. The true data-generating process is the quantum model with $\sigma_0=0.2841$, $\hbar_{\mathrm{econ}}=0.087$, $\gamma=0.51$, $\beta=0.001$ (Fig A.1 canonical calibration). Gaussian noise $\sigma=0.5$ vol pts is added. Quantum model fits $\hbar_{\mathrm{econ}}$ only (1 parameter); $\sigma_0$, $\gamma$, and $\beta$ are fixed at their true values.
+\end{table}

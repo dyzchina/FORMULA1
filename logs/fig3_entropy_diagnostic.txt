@@ -1,0 +1,44 @@
+Fig 3 Entropy — regeneration diagnostic
+========================================
+Executed at: 2026-09-05T08:52:20.182975
+Axis version: v2 (refactored pipeline)
+Window: 2023-01-01 to 2023-06-30
+Trading days: 124
+
+S(ρ_t) statistics (full window):
+  min:  0.3405  (date 2023-03-17)
+  mean: 0.5898
+  max:  0.6931  (date 2023-01-30)
+  median: 0.6135
+
+Baseline calibration window (2023-01-03 to 2023-02-15):
+  Trading days in baseline: 31
+  Baseline S mean:  0.5968
+  Baseline S std:   0.0863
+  Baseline 5th percentile:  0.4465
+  Baseline 50th percentile: 0.6074
+  Baseline 95th percentile: 0.6899
+  Baseline max:     0.6931
+
+Early warning analysis:
+  95th-percentile threshold: 0.6899
+  First date S(ρ_t) > threshold (starting 2023-02-16): 2023-02-17
+  Distance to SVB event (2023-03-10) in trading days: 15
+  Distance to SVB event in calendar days: 21
+  Empirical claim check:
+    Target: first_crossing ∈ [Feb 20, Mar 3]  (approximately Feb 24)
+    Target: distance to SVB in [7, 25] trading days  (approximately 15)
+    Verdict: MARGINAL (one criterion met)
+
+Crisis event entropy values:
+  SVB       (2023-03-10): S = 0.5684
+  Signature (2023-03-12): S = 0.5538 (nearest trading day = 2023-03-13)
+  FRC       (2023-05-01): S = 0.6795
+
+Post-crisis persistence:
+  Number of trading days between first_crossing and end of window where S > threshold: 3
+  Fraction of post-crossing days above threshold: 0.033
+
+Figure files:
+  figures/entropy_2023.pdf  (21939 bytes)
+  figures/entropy_2023.png  (151467 bytes)

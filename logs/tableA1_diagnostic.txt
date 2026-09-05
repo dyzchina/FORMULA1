@@ -1,0 +1,28 @@
+Table A.1 Δ_QM vs Δ_BS Convergence — diagnostic (Batch #3.6c)
+============================================================
+Executed at: 2026-09-05T00:53:49.089959Z
+L-level: L3_SIM (pure parameter sweep, no data)
+
+--- Parameters ---
+S = 38.0
+K = 40.0
+x = ln(S/K) = -0.051293
+τ = 30 days = 0.1190 years
+r = 0.045
+σ_0 = 0.35
+γ = 0.51
+
+Δ_BS = 0.374482
+Γ_BS = 0.082596
+
+--- Results ---
+hbar=0.15: Δ_QM=0.371759, Δ_BS=0.374482, rel_err=0.7270%
+hbar=0.10: Δ_QM=0.372667, Δ_BS=0.374482, rel_err=0.4847%
+hbar=0.05: Δ_QM=0.373574, Δ_BS=0.374482, rel_err=0.2423%
+hbar=0.01: Δ_QM=0.374300, Δ_BS=0.374482, rel_err=0.0485%
+hbar=0.00: Δ_QM=0.374482, Δ_BS=0.374482, rel_err=0.0000%
+
+--- Guard results ---
+G1 (Δ_QM(ℏ=0) = Δ_BS exactly): PASS
+G2 (Δ_QM(ℏ=0.15) differs from Δ_BS by < 30%): PASS
+G3 (Δ_QM monotonic in ℏ): PASS

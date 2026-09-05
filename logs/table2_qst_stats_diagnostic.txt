@@ -1,0 +1,45 @@
+Table 2 QST Stats — diagnostic (Batch #3.6a)
+============================================================
+Executed at: 2026-09-05T00:52:43.378137+00:00
+Window: 2004-01-01 to 2024-12-31
+Scale: 2.0
+
+--- theta_t (distress amplitude) ---
+  Mean:     0.367740
+  Median:   0.318570
+  Std:      0.206090
+  P5:       0.108127
+  P95:      0.783878
+  AR(1):    0.757911
+  N:        5096
+  Date:     2004-10-04 00:00:00 to 2024-12-31 00:00:00
+
+--- phi_t (contagion phase, rad) ---
+  Mean:     -0.578217
+  Median:   -2.310380
+  Std:      2.420125
+  P5:       -2.940573
+  P95:      2.754775
+  AR(1):    0.902464
+  N:        406
+  Date:     2023-05-22 00:00:00 to 2024-12-31 00:00:00
+  (HY-OAS available dates only)
+
+--- hbar_econ (Planck constant) ---
+  Mean:     0.062000
+  Median:   0.026323
+  Std:      0.145627
+  P5:       0.011371
+  P95:      0.228475
+  AR(1):    0.982248
+  N:        5095
+  Date:     2004-10-04 00:00:00 to 2024-12-30 00:00:00
+  Scaling k: 613.766908
+  (Amihud 20d MA, scaled to mean=0.062)
+
+--- Guard results ---
+  Guard 1 (theta_max <= 1.0): PASS (max=0.999296)
+  Guard 2 (phi_n >= 100):     PASS (n=406)
+  Guard 3 (hbar_mean ~0.062): PASS (mean=0.062000)
+  Guard 4 (AR1 in [-1,1]):    PASS
+  Guard 5 (10 tickers):        PASS

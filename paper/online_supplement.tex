@@ -1,0 +1,191 @@
+% !TeX program = xelatex
+% =========================================================================
+%  ONLINE SUPPLEMENT for
+%  "A Theory of Quantum Option Pricing and Empirical Tests"
+%  Hongjun Gou & Yongjun Hua
+%  Target: Econometrica
+%  Package version: reproducible_package_v4.1
+% =========================================================================
+
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{mathrsfs}
+\usepackage{bbm}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage[round,authoryear]{natbib}
+\usepackage{hyperref}
+\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage{setspace}
+\singlespacing
+\usepackage{tikz}
+
+% External-document cross-references to main manuscript
+\usepackage{xr-hyper}
+\externaldocument[M-]{main}
+
+% Renumber sections/equations/theorems/figures/tables as S.1 ...
+\renewcommand{\thesection}{S.\arabic{section}}
+\renewcommand{\theequation}{S.\arabic{equation}}
+\renewcommand{\thefigure}{S.\arabic{figure}}
+\renewcommand{\thetable}{S.\arabic{table}}
+
+% Theorem environments (mirror main paper for consistency)
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+% Shared macros (must mirror preamble in main.tex)
+\newcommand{\Hil}{\mathscr{H}}
+\newcommand{\Bop}{\mathscr{B}(\Hil)}
+\newcommand{\Trc}{\mathscr{T}(\Hil)}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\id}{\mathbbm{1}}
+\newcommand{\he}{\hbar_{\mathrm{econ}}}
+\newcommand{\hbarecon}{\he}
+\newcommand{\Xop}{\hat{X}}
+\newcommand{\Pop}{\hat{P}}
+\newcommand{\Sop}{\hat{S}}
+\newcommand{\Gop}{\hat{G}}
+\newcommand{\Hop}{\hat{H}}
+\newcommand{\Hedge}{\hat{\Pi}}
+\newcommand{\Lop}{\hat{L}}
+\newcommand{\Lind}{\mathcal{L}}
+\newcommand{\rhostate}{\rho}
+\newcommand{\EQ}{\mathbb{E}^{\mathbb{Q}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Lp}[1]{L^{2}(#1)}
+\newcommand{\inner}[2]{\langle #1 \,|\, #2 \rangle}
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\ketbra}[1]{\lvert #1 \rangle\!\langle #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\re}{r}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\diag}{diag}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    pdfauthor={Anonymous},
+    pdftitle={Online Supplement --- A Theory of Quantum Option Pricing}
+}
+
+\title{Online Supplement to\\
+       ``A Theory of Quantum Option Pricing and Empirical Tests''}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{0em}{3.6em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{3.6em}{3.6em}}
+\makeatother
+
+\tableofcontents
+\bigskip
+\noindent\textit{Note.} References to the main manuscript are prefixed
+\texttt{M-}; e.g., Theorem~\ref{M-thm:effective-vol} refers to
+Theorem~4.10 of the main paper.
+\clearpage
+
+% =========================================================================
+\section{Semiclassical WKB Expansion: Full Derivation}
+\label{sec:S1}
+% =========================================================================
+\input{sections/S1-wkb-derivation}
+
+% =========================================================================
+\section{Additional Empirical Results and Robustness Checks}
+\label{sec:S2}
+% =========================================================================
+\input{sections/S2-additional-empirical}
+
+% =========================================================================
+\section{Extended Policy Discussion}
+\label{sec:S3}
+% =========================================================================
+\input{sections/S3-extended-policy}
+
+% =========================================================================
+\section{Alternative Copula-Frontier Construction}
+\label{sec:S5}
+% =========================================================================
+\input{sections/S5-copula-frontier}
+
+% =========================================================================
+\section{Dynamics of the Quantum Risk State and the Classical Limit}
+\label{sec:S6}
+% =========================================================================
+\input{sections/S6-dynamics-classical-limit}
+
+% =========================================================================
+\section{Higher-Order Smile Correction}
+\label{sec:S7}
+% =========================================================================
+\input{sections/S7-smile-correction}
+
+% =========================================================================
+\section{Empirical Methodology Details}
+\label{sec:S8}
+% =========================================================================
+\input{sections/S8-empirical-methodology}
+
+% =========================================================================
+\section{Moyal Expansion and the Quantum-Corrected Fokker--Planck Equation}
+\label{sec:S9}
+% =========================================================================
+\input{sections/A1-moyal}
+
+% =========================================================================
+\section{Smoluchowski Limit and the Classical Diffusion Coefficient}
+\label{sec:S10}
+% =========================================================================
+\input{sections/A2-smoluchowski}
+
+% =========================================================================
+\section{Cumulant Expansion of the Implied Volatility Surface}
+\label{sec:S11}
+% =========================================================================
+\input{sections/A3-cumulants}
+
+% =========================================================================
+\section{Quantum Trading Strategy}
+\label{sec:S12}
+% =========================================================================
+\input{sections/A4-trading}
+
+% =========================================================================
+\section{No-Free-Lunch-with-Vanishing-Risk and the GNS Construction}
+\label{sec:S13}
+% =========================================================================
+\input{sections/A5-nflvr}
+
+\bibliographystyle{apalike}
+\bibliography{references}
+
+\end{document}

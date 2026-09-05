@@ -1,0 +1,10 @@
+ticker,path,rows,first_date,last_date,sha256
+JPM,data/raw/expanded/equity/JPM_daily.csv,1382,2019-01-02,2024-06-28,2ab9c2d790af8c49fe082fb6d706ae0047bef2a319b18d68ebf05c98aaa61380
+BAC,data/raw/expanded/equity/BAC_daily.csv,1382,2019-01-02,2024-06-28,0074849e4fa84fdb5510795272b83b116a57b8c4535ea94190dc36fcfb3eed29
+C,data/raw/expanded/equity/C_daily.csv,1382,2019-01-02,2024-06-28,a04792fe5a692c299e9e90635ce554ab1f2d8c49d0df9eb5f46d955c5e5abd1a
+GS,data/raw/expanded/equity/GS_daily.csv,1382,2019-01-02,2024-06-28,37818644d5e161d16b3a7fe6f1259ee28e26b6a8a61a112f2a82ac1eee4e3aa5
+MS,data/raw/expanded/equity/MS_daily.csv,1382,2019-01-02,2024-06-28,8ec222d3aa8da406770740700be79592c4bdaac5a406223088fb3b4d09b64f6c
+WFC,data/raw/expanded/equity/WFC_daily.csv,1382,2019-01-02,2024-06-28,8abbdf114a8817d77dfe3ee1fd72028c7b719a87e44bfadcdd947e8ae43305f8
+KBE,data/raw/expanded/equity/KBE_daily.csv,1382,2019-01-02,2024-06-28,9d665755543abe6317069c0d961214a0442cdf25435a7418a5f71eb35fcf878a
+XLF,data/raw/expanded/equity/XLF_daily.csv,1382,2019-01-02,2024-06-28,76cf3a7878deac63d2056f694c781349b04203e427dc8e349928346e19bc9044
+KRE,data/raw/expanded/equity/KRE_daily.csv,1382,2019-01-02,2024-06-28,e87539621750919fcec02395296665e8df3917265b6fcead64eccc3f5b4eec79

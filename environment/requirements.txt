@@ -1,0 +1,15 @@
+# Reproducibility environment for: A Theory of Quantum Option Pricing and Empirical Tests
+# Generated: 2026-06-23 19:08:33
+# Python: 3.11.9
+# Locked from pip freeze on 2026-06-23
+
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+matplotlib>=3.7
+yfinance>=1.4
+fredapi>=0.5
+statsmodels>=0.14
+cvxpy>=1.4
+pyarrow>=12.0
+python-dotenv>=1.0

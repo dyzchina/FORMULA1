@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Asymptotic skew slope comparison across option pricing models. The skew slope $\partial\sigma/\partial x|_{x=0}$ measures the sensitivity of implied volatility to log-moneyness $x = \ln(K/S)$ at the at-the-money point, in the short-maturity limit $\tau \to 0$.}
+\label{tab:skew-asymptotics}
+\begin{tabular}{lccc}
+\hline
+Model & Skew slope $\partial\sigma/\partial x|_{x=0}$ & $\tau\to 0$ limit & Free parameters \\
+\hline
+BSM & $0$ & $0$ & 1 ($\sigma_0$) \\
+Heston & $O(1)$ & Finite & 1 ($\nu$) \\
+Jump-diffusion & $O(\tau^{-1/2})$ & $\infty$ & 2 ($\lambda$, $\mu_J$) \\
+Rough volatility & $O(\tau^{H-1/2})$ & $\infty$ if $H<1/2$ & 1 ($H$) \\
+Quantum & $O(\tau^{-1})$ & $\infty$ & 1 ($\hbar_{\mathrm{econ}}$) \\
+\hline
+\end{tabular}
+
+\medskip
+\footnotesize
+\textit{Note}: The quantum model exhibits the steepest short-maturity skew divergence ($\tau^{-1}$), reflecting the $\hbar_{\mathrm{econ}}^2/\tau^2$ term in the implied variance expansion (eq.~3). This is consistent with the empirical observation that near-dated out-of-the-money options carry the most pronounced volatility skew during crisis regimes.
+\end{table}

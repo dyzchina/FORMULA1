@@ -1,0 +1,200 @@
+﻿%==============================================================================
+%  The Pricing of Options Based on Quantum Probability States:
+%  Theory and a Test of Equity Options
+%
+%  Target journal: Econometrica (ECA)
+%  Compile: pdflatex main && bibtex main && pdflatex main && pdflatex main
+%==============================================================================
+\makeatletter
+\providecommand\IfFormatAtLeastTF[3]{#3}
+\providecommand\IfFormatAtLeastT[2]{#2}
+\makeatother
+\makeatletter
+\providecommand\IfFormatAtLeastTF[3]{#3}
+\providecommand\IfFormatAtLeastT[2]{#2}
+\providecommand\IfDocumentMetadataTF[2]{#2}
+\providecommand\IfDocumentMetadataT[1]{}
+\makeatother
+\documentclass[12pt,a4paper]{article}
+
+%------------------------------- packages -------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{mathrsfs}      % \mathscr for Hilbert/operator spaces
+\usepackage{bbm}           % \mathbbm{1} indicator/identity
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}      % [H] placement option for non-floating figures
+\usepackage{placeins}   % \FloatBarrier to keep figures before references
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{xcolor}
+\usepackage{csquotes}
+\usepackage[round,authoryear]{natbib}
+\usepackage{doi}        % renders doi={} fields as hyperlinks via hyperref
+\usepackage{hyperref}
+
+% --- All links black (ECA submission standard: no colored hyperlinks) ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    bookmarksnumbered=true,    % Include section numbers in PDF bookmarks
+    pdfpagemode=UseOutlines,   % Show bookmarks panel when opening PDF
+    pdfstartview=FitH,         % Fit page width to window
+    pdfauthor={Anonymous},     % [BLINDED-FOR-REVIEW] Clear PDF metadata
+    pdftitle={A Theory of Quantum Option Pricing and Empirical Tests}
+}
+
+\usepackage[capitalize,noabbrev]{cleveref}
+% Cross-document references to Online Supplement
+\usepackage{xr-hyper}
+\IfFileExists{online_supplement.aux}{%
+  \externaldocument[OS-]{online_supplement}%
+}{}
+
+%------------------------- spacing optimization -------------------------------
+\AtBeginDocument{%
+  \setlength{\abovedisplayskip}{5pt plus 2pt minus 2pt}%
+  \setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}%
+  \setlength{\abovedisplayshortskip}{3pt plus 1pt minus 1pt}%
+  \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}%
+  \setlength{\dblfloatsep}{6pt plus 2pt minus 2pt}%
+  \setlength{\dbltextfloatsep}{8pt plus 3pt minus 2pt}%
+  \setlength{\parskip}{2pt plus 1pt minus 1pt}%
+  \setlength{\parsep}{2pt plus 1pt minus 1pt}%
+  \setlength{\topsep}{4pt plus 2pt minus 2pt}%
+  \setlength{\partopsep}{2pt plus 1pt minus 1pt}%
+  \setlength{\itemsep}{1pt plus 1pt minus 1pt}%
+}
+
+%------------------------- theorem environments -------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+%------------------------------- macros ---------------------------------------
+\newcommand{\Hil}{\mathscr{H}}                       % market Hilbert space
+\newcommand{\Bop}{\mathscr{B}(\Hil)}                  % bounded operators
+\newcommand{\Trc}{\mathscr{T}(\Hil)}                  % trace class
+\newcommand{\Tr}{\operatorname{Tr}}                   % trace
+\newcommand{\id}{\mathbbm{1}}                         % identity operator
+\newcommand{\he}{\hbar_{\mathrm{econ}}}                           % effective economic Planck constant
+\newcommand{\hbarecon}{\he}                                       % alias for readability
+\newcommand{\Xop}{\hat{X}}                            % log-price operator
+\newcommand{\Pop}{\hat{P}}                            % order-flow momentum operator
+\newcommand{\Sop}{\hat{S}}                            % price operator
+\newcommand{\Gop}{\hat{G}}                            % payoff operator
+\newcommand{\Hop}{\hat{H}}                            % Hamiltonian
+\newcommand{\Hedge}{\hat{\Pi}}                        % hedging operator
+\newcommand{\Lop}{\hat{L}}                            % Lindblad operator
+\newcommand{\Lind}{\mathcal{L}}                       % Lindbladian (generator)
+\newcommand{\rhostate}{\rho}                          % market state (density operator)
+\newcommand{\EQ}{\mathbb{E}^{\mathbb{Q}}}             % risk-neutral expectation
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Lp}[1]{L^{2}(#1)}
+\newcommand{\inner}[2]{\langle #1 \,|\, #2 \rangle}   % Dirac inner product
+\newcommand{\ket}[1]{\lvert #1 \rangle}
+\newcommand{\bra}[1]{\langle #1 \rvert}
+\newcommand{\ketbra}[1]{\lvert #1 \rangle\!\langle #1 \rvert}
+\newcommand{\norm}[1]{\lVert #1 \rVert}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\Set}[1]{\left\{\, #1 \,\right\}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\re}{r}                                   % short rate
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\ReLU}{ReLU}
+
+%------------------------------- metadata -------------------------------------
+% [BLINDED-FOR-REVIEW] Original author/funding info saved in coverletter/author-info.tex
+\title{A Theory of Quantum Option Pricing and Empirical Tests}
+
+\author{%
+  Hongjun Gou\thanks{Industrial and Commercial Bank of China,
+    Beijing 100140, China.
+    Email: \href{mailto:gouhongjun_bs@cq.icbc.com.cn}{gouhongjun\_bs@cq.icbc.com.cn}}
+  \and
+  Yongjun Hua\thanks{Corresponding author. School of Economics and Business
+    Administration, Chongqing University, Chongqing 400044, China.
+    Email: \href{mailto:huayongjun@cqu.edu.cn}{huayongjun@cqu.edu.cn}}%
+}
+
+\date{}
+
+
+% ================================================================
+% AER submission: single-spaced, 12pt, standard margins
+% Online Supplement compiled separately (online_supplement.tex)
+% ================================================================
+\usepackage{setspace}
+\usepackage{pdflscape}
+\singlespacing
+
+\begin{document}
+
+\maketitle
+
+%------------------------------- abstract -------------------------------------
+\input{sections/00-abstract}
+
+%============================== MAIN TEXT =====================================
+% Section 1: Introduction
+\input{sections/01-introduction}
+
+% Section 2: The Weyl-Heisenberg Algebra of Market Observables
+\input{sections/02-weyl-heisenberg}
+
+% Section 3: No-Arbitrage and the Quantum Pricing Formula
+\input{sections/03-no-arbitrage}
+
+% Section 4: Duality Hedging and the Semiclassical Expansion
+\input{sections/04-duality-hedging}
+\FloatBarrier
+
+% Section 5: Empirical Analysis (incl. robustness, §5 ← former §6)
+\input{sections/05-empirical-main}
+
+% Section 6: Conclusion (policy implications, limitations, and outlook)
+\input{sections/07-discussion}
+
+% Appendix A–E: Migrated to Online Supplement §S.9–S.13
+% See OS §S.9  (Moyal Expansion / Fokker-Planck),
+%         §S.10 (Smoluchowski Classical Limit),
+%         §S.11 (Cumulant Expansion / IV Surface),
+%         §S.12 (Quantum Trading Strategy),
+%         §S.13 (NFLVR–GNS Equivalence)
+% The Online Supplement is compiled as a separate PDF.
+
+%------------------------------- back matter ----------------------------------
+\input{sections/99-backmatter}
+%------------------------------- bibliography ----------------------------------
+\FloatBarrier  % prevent figures from floating past references
+\bibliographystyle{apalike} % replace with journal style at submission
+
+% Back-matter sections (Acknowledgements, Data Availability, Competing Interest,
+% AI Declaration, Author Contributions, Author Biographies) are omitted here;
+% they will be entered directly in the Econometrica online submission system.
+
+\bibliography{references}
+
+\end{document}

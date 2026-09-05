@@ -1,0 +1,38 @@
+# Cover letters (excluded per user instruction)
+paper/cover_letter*.tex
+paper/cover_letter*.pdf
+
+# Backup folder
+paper （备注）/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.bbl
+*.blg
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+code/data_cache/
+_recon_20260703/
+
+# Large raw data (reproducible from scripts)
+data/raw/expanded/hf/
+data/raw/CL_F.csv
+data/raw/GC_F.csv
+
+# OS files
+.DS_Store
+Thumbs.db

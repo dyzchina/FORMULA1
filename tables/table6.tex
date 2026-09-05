@@ -1,0 +1,18 @@
+\begin{table}[htbp]
+\centering
+\caption{Hedging performance comparison: root-mean-square hedging error (RMSHE) for a 20-day 5\% out-of-the-money KRE call option delta-hedged over the SVB crisis window (2023-02-27 to 2023-03-24).}
+\label{tab:hedging-rmshe}
+\begin{tabular}{lrrr}
+\hline
+Model & RMSHE (bps) & Mean P\&L (bps) & P\&L Std.\ Dev.\ (bps) \\
+\hline
+BSM delta hedge           & 560.1 & -126.5 & 545.6 \\
+Heston dynamic hedge      & 572.3 & -130.1 & 557.3 \\
+Quantum optimal hedge     & 555.9 & -124.7 & 541.8 \\
+\hline
+\end{tabular}
+
+\medskip
+\footnotesize
+\textit{Note}: RMSHE is the root-mean-square hedging error as a fraction of initial option premium. Rebalancing is daily. Quantum optimal hedge uses the formula from Proposition~\ref{prop:quantum-optimal-hedge}: $\Delta_{\mathrm{QM}} = \Delta_{\mathrm{BS}}(\sigma_0) + \hbar_{\mathrm{econ}} \cdot \Gamma_{\mathrm{BS}}(\sigma_0) \cdot \gamma \cdot x/\tau$, where $x = \ln(S/K)$ and $\tau$ is time-to-maturity in years. At 5\% OTM ($x>0$), the quantum correction is non-zero and amplified during the SVB spot decline.
+\end{table}
